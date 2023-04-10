@@ -60,6 +60,10 @@
 .api-action-buttons > a {
   margin-right: 5px;
 }
+.api-action-buttons > a:hover {
+  color:#fff;
+  font-weight: 600;
+}
 
 .api-action-buttons a.pull-right {
   margin-left: 10px;
@@ -96,4 +100,9 @@
 
 .api-mocked-actions {
   margin-top: 10px;
+}
+
+a.btn.btn-primary:hover{
+  color:#fff;
+  font-weight: 600;
 }
