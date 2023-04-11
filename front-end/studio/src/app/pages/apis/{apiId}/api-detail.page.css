@@ -106,3 +106,8 @@ a.btn.btn-primary:hover{
   color:#fff;
   font-weight: 600;
 }
+
+.btn-default.pull-right.pf-black-700:hover {
+  color:black;
+  font-weight: 600;
+}

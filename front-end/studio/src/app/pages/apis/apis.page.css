@@ -59,3 +59,12 @@ a.clear-filters {
 .api-list-items .none-matched-state .alert {
   background-color: white;
 }
+
+.form-group a:hover {
+  color: #fff;
+  font-weight: 600;
+}
+.btn-default.pull-right.pf-black-700:hover {
+  color:black;
+  font-weight: 600;
+}
