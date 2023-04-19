@@ -35,6 +35,7 @@ import {CopyPageComponent} from './pages/apis/{apiId}/copy/copy.page';
 import {MockPageComponent} from './pages/apis/{apiId}/mock/mock.page';
 import {DefaultPageComponent} from "./pages/default.page";
 import {ValidationPageComponent} from "./pages/settings/validation/validation.page";
+import {LoginsessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
 import {ApiTextEditorPageComponent, ApiTextEditorPageGuard} from "./pages/apis/{apiId}/editor/api-teditor.page";
 import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/template-publication.page";
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
@@ -78,6 +79,11 @@ const routes: Routes = [
     {
         path: "settings/validation",
         component: ValidationPageComponent,
+        canActivate: [AuthenticationCanActivateGuard]
+    },
+    {
+        path: "settings/loginsessions",
+        component: LoginsessionsComponent,
         canActivate: [AuthenticationCanActivateGuard]
     },
     {
