@@ -1,7 +1,6 @@
 package io.apicurio.hub.api.rest;
 
 import io.apicurio.hub.api.beans.DeviceSession;
-import io.apicurio.hub.core.beans.ApiTemplateKind;
 import io.apicurio.hub.core.exceptions.ServerError;
 
 import javax.ws.rs.GET;
