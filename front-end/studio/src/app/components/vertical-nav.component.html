@@ -24,11 +24,6 @@
             <span class="fa fa-fw fa-cogs"></span>
             <div>Settings</div>
         </div>
-        <div id="api-nav-item-login-session" class="api-nav-item" [class.active]="isLoginSessionRoute()"
-             [class.selected]="currentSubMenu === subMenuTypes.LoginSession" (click)="goToLoginSession()">
-            <span class="fa fa-sign-in"></span>
-            <div>Login Session</div>
-        </div>
         <div class="api-nav-item-filler">
         </div>
     </div>
@@ -58,6 +53,9 @@
             </div>
             <div class="action" [class.active]="isRouteActive('/settings/validation')">
                 <a routerLink="/settings/validation"><span class="fa fa-fw fa-exclamation-triangle"></span><span>Validation</span></a>
+            </div>
+            <div class="action" [class.active]="isRouteActive('/settings/login-sessions')">
+                <a routerLink="/settings/login-sessions"><span class="fa fa-sign-in"></span><span>Login Session</span></a>
             </div>
         </div>
     </div>

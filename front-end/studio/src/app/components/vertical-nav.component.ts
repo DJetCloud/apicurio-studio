@@ -17,7 +17,6 @@
 
 import {Component, OnInit} from "@angular/core";
 import {Router, NavigationStart} from "@angular/router";
-import {ApisService} from "../services/apis.service";
 import {ConfigService} from "../services/config.service";
 import {IAuthenticationService} from "../services/auth.service";
 import {User} from "../models/user.model";
@@ -65,7 +64,7 @@ export class VerticalNavComponent implements OnInit {
     }
 
     public goToLoginSession(): void {
-        this.router.navigate(["settings/loginsessions"]);
+        this.router.navigate(["settings/login-sessions"]);
     }
     /**
      * Navigates the user to the Templates.
@@ -123,7 +122,7 @@ export class VerticalNavComponent implements OnInit {
      * @returns {boolean}
      */
     isLoginSessionRoute(): boolean {
-        return this.isRouteActive("/settings/loginsessions");
+        return this.isRouteActive("/settings/login-sessions");
     }
     /**
      * Returns true if the templates route should be accessible.

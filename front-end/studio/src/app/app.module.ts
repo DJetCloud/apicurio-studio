@@ -82,7 +82,7 @@ import {LoadingComponent} from "./components/common/loading.component";
 import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/template-publication.page";
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
-import { LoginsessionsComponent } from './pages/settings/loginsessions/loginsessions.component';
+import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
 
 @NgModule({
     imports: [
@@ -100,7 +100,7 @@ import { LoginsessionsComponent } from './pages/settings/loginsessions/loginsess
         GenerateProjectWizardComponent, ActivityItemComponent, EditorDisconnectedDialogComponent, MockPageComponent,
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
-        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginsessionsComponent
+        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,

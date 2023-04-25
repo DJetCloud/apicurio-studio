@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
-import { LoginSession } from '../models/login-session';
+import {Injectable} from '@angular/core';
+import {LoginSession} from '../models/login-session';
 import {AbstractHubService} from "./hub";
 import {IAuthenticationService} from "./auth.service";
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import {ConfigService} from "./config.service";
 
 @Injectable({
@@ -10,15 +10,15 @@ import {ConfigService} from "./config.service";
 })
 export class LoginSessionService extends AbstractHubService{
 
- constructor(http: HttpClient, authService: IAuthenticationService, config: ConfigService) {
+    constructor(http: HttpClient, authService: IAuthenticationService, config: ConfigService) {
      super(http, authService, config);
- }
+    }
 
-  public getLoginSession(): Promise<LoginSession[]> {
+    public getLoginSession(): Promise<LoginSession[]> {
     
-    let url: string = this.endpoint("/device-sessions");
-    let options: any = this.options({ "Accept": "application/json" });
+     let url: string = this.endpoint("/device-sessions");
+     let options: any = this.options({ "Accept": "application/json" });
 
-    return this.httpGet<LoginSession[]>(url, options);
-}
+     return this.httpGet<LoginSession[]>(url, options);
+  }
 }

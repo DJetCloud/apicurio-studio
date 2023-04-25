@@ -21,6 +21,7 @@
 .name-and-description {
     display: flex;
     flex-direction: column;
+    width: 40%;
 }
 
 .login-sessions-title {
@@ -35,4 +36,7 @@
 
 .description {
    font-weight: bold;
+   display: flex;
+   flex-direction: row;
+   align-items: center
 }
