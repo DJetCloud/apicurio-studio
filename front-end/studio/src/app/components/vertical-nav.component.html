@@ -24,6 +24,11 @@
             <span class="fa fa-fw fa-cogs"></span>
             <div>Settings</div>
         </div>
+        <div id="api-nav-item-login-session" class="api-nav-item" [class.active]="isLoginSessionRoute()"
+             [class.selected]="currentSubMenu === subMenuTypes.LoginSession" (click)="goToLoginSession()">
+            <span class="fa fa-sign-in"></span>
+            <div>Login Session</div>
+        </div>
         <div class="api-nav-item-filler">
         </div>
     </div>

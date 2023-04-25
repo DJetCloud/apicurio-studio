@@ -16,7 +16,7 @@ export class LoginSessionService extends AbstractHubService{
 
   public getLoginSession(): Promise<LoginSession[]> {
     
-    let url = "https://microcks.djai.app/rest/DJAI+Device+Sessions/1.0.0/device-sessions";
+    let url: string = this.endpoint("/device-sessions");
     let options: any = this.options({ "Accept": "application/json" });
 
     return this.httpGet<LoginSession[]>(url, options);
