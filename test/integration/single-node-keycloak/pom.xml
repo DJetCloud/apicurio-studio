@@ -4,7 +4,7 @@
     <parent>
         <groupId>io.apicurio</groupId>
         <artifactId>apicurio-studio-test-integration</artifactId>
-        <version>1.0.16-SNAPSHOT</version>
+        <version>1.0.18-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>apicurio-studio-test-integration-single-node-keycloak</artifactId>
@@ -115,7 +115,7 @@
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>6.12.4</version>
+            <version>6.13.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>

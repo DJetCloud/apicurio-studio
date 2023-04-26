@@ -4,6 +4,7 @@
   grid-column-start: nav;
   grid-column-end: nav;
   z-index: 100;
+  padding: 0;
 }
 #api-vertical-nav .api-nav-item {
   display: flex;
@@ -156,4 +157,8 @@
   bottom: 0;
   z-index: 80;
   background-color: rgba(0, 0, 0, .2);
+}
+
+span.icon-bar {
+  background-color: #888;
 }

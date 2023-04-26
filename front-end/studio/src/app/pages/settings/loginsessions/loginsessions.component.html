@@ -1,0 +1,33 @@
+    <div id="api-breadcrumb-bar">
+        <breadcrumbs>
+            <li breadcrumb label="Settings" [route]="[ '/settings' ]"></li>
+            <li breadcrumb label="Login Sessions" class="active"></li>
+        </breadcrumbs>
+    </div>
+    <page-error [error]="pageError" *ngIf="pageError"></page-error>
+    <div class="container-fluid" *ngIf="!pageError">
+        <div class="row" style="min-height: 35px"></div>
+        <div class="row row-cards-pf">
+            <div class="col-xs-12 col-sm-2">
+                <settings-nav tab="login-sessions"></settings-nav>
+            </div>
+            <div class="col-xs-12 col-sm-8 login-sessions">
+                <h1 class="main-title">Login Sessions</h1>
+                <p class="login-sessions-title">
+                   Information about signed devices
+                </p>
+                <div class="profiles" *ngIf="isLoaded('sessions')">
+                    <div class="login-session" *ngFor="let session of sessions">
+                        <div class="header">
+                            <div class="description">{{ session.ipAddress }}</div>
+                             <div class="name-and-description">
+                                <span>{{ session.name }}</span>
+                                <span>Last accessed on {{ session.lastAccess * 1000| date:'MMMM dd, yyyy' }} at {{session.lastAccess *1000 | date:'h:mm a'}}</span>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+  

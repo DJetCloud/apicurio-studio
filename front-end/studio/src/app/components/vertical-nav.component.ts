@@ -17,7 +17,6 @@
 
 import {Component, OnInit} from "@angular/core";
 import {Router, NavigationStart} from "@angular/router";
-import {ApisService} from "../services/apis.service";
 import {ConfigService} from "../services/config.service";
 import {IAuthenticationService} from "../services/auth.service";
 import {User} from "../models/user.model";
@@ -27,7 +26,7 @@ import {ApicurioRole} from "../models/apicurio-role.enum";
  * Models the sub-menus off the main left-hand vertical nav.
  */
 export enum VerticalNavSubMenuType {
-    None, Dashboard, APIs, Settings, Templates, Plus
+    None, Dashboard, APIs, Settings, Templates, LoginSession, Plus
 }
 
 
@@ -68,6 +67,9 @@ export class VerticalNavComponent implements OnInit {
         this.router.navigate(["/apis"]);
     }
 
+    public goToLoginSession(): void {
+        this.router.navigate(["settings/login-sessions"]);
+    }
     /**
      * Navigates the user to the Templates.
      */
@@ -120,6 +122,13 @@ export class VerticalNavComponent implements OnInit {
     }
     
     /**
+     * Returns true if the currently active route is /loginsessions/*
+     * @returns {boolean}
+     */
+    isLoginSessionRoute(): boolean {
+        return this.isRouteActive("/settings/login-sessions");
+    }
+    /**
      * Returns true if the templates route should be accessible.
      * @returns {boolean}
      */
@@ -150,5 +159,4 @@ export class VerticalNavComponent implements OnInit {
             this.subMenuOut = true;
         }
     }
-
 }
