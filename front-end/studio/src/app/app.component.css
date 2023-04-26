@@ -7,6 +7,8 @@
   grid-column-end: m;
   width: 130px;
   overflow: hidden;
+  
+
 }
 
 .app-body {
@@ -29,4 +31,20 @@ span.icon-bar {
 
 .navbar-collapse.navbar-collapse-pf-site.collapse {
   padding: 0;
+}
+
+.pf-c-page__header-tools {
+  position: absolute;
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+ .vnav {
+  grid-column-start: m;
+  grid-column-end: m;
+  width: 130px;
+  overflow: hidden;
+  margin-top: 70px;
+  z-index: 999;
+ }
 }
