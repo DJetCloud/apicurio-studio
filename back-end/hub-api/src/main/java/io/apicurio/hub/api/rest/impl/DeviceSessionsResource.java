@@ -37,6 +37,11 @@ public class DeviceSessionsResource implements IDeviceSessionsResource {
         }
     }
 
+    @Override
+    public void deleteSession(String sessionId) throws ServerError {
+
+    }
+
     private IDeviceSessionsProvider provider(boolean mock) {
         return mock ? mockProvider : keycloakProvider;
     }
