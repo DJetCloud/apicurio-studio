@@ -1,0 +1,42 @@
+.login-sessions {
+    border: 1px solid #ddd;
+    background-color: white;
+    padding-bottom: 25px;
+    width: 55%;
+}
+.login-session {
+    background: #F5F5F5;
+    border-bottom: 1px solid #F5F5F5;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    padding: 8px 8px 3px;
+    border-bottom: 1px solid white;
+}
+
+.name-and-description {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+.login-sessions-title {
+    line-height: 21px;
+    color: #000000;
+}
+
+.main-title {
+    color: #282D33;
+    font-size: 24px;
+}
+
+.description {
+   font-weight: bold;
+   display: flex;
+   flex-direction: row;
+   align-items: center
+}
