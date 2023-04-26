@@ -26,7 +26,7 @@ import {ApicurioRole} from "../models/apicurio-role.enum";
  * Models the sub-menus off the main left-hand vertical nav.
  */
 export enum VerticalNavSubMenuType {
-    None, Dashboard, APIs, Settings, Templates, LoginSession
+    None, Dashboard, APIs, Settings, Templates, LoginSession, Plus
 }
 
 
@@ -63,6 +63,10 @@ export class VerticalNavComponent implements OnInit {
         this.router.navigate(["/dashboard"]);
     }
 
+    public goToApisList(): void {
+        this.router.navigate(["/apis"]);
+    }
+
     public goToLoginSession(): void {
         this.router.navigate(["settings/login-sessions"]);
     }
@@ -92,7 +96,7 @@ export class VerticalNavComponent implements OnInit {
     isDashboardRoute(): boolean {
         return this.isRouteActive("/dashboard", true);
     }
-
+    
     /**
      * Returns true if the currently active route is the templates.
      * @returns {boolean}
