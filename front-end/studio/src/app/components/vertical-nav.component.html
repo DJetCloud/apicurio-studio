@@ -3,7 +3,14 @@
     <div id="api-nav-menu-shade" *ngIf="currentSubMenu != subMenuTypes.None" (click)="onShadeClick()">
     </div>
 
-    <div id="api-vertical-nav">
+        <!-- Create Button -->
+        <div id="api-nav-item-create" class="api-nav-item-create"
+             [class.selected]="currentSubMenu === subMenuTypes.Plus" (click)="toggleSubMenu(subMenuTypes.Plus)">
+            <img src="/assets/plus-icon.svg">
+            <div class="create">Create</div>
+        </div>
+
+     <div id="api-vertical-nav">
         <div id="api-nav-item-dashboard" class="api-nav-item" [class.active]="isDashboardRoute()"
              [class.selected]="currentSubMenu === subMenuTypes.Dashboard" (click)="goToDashboard()">
             <span class="fa fa-fw fa-dashboard"></span>
@@ -15,7 +22,7 @@
             <div>Templates</div>
         </div>
         <div id="api-nav-item-apis" class="api-nav-item" [class.active]="isAPIsRoute()"
-             [class.selected]="currentSubMenu === subMenuTypes.APIs" (click)="toggleSubMenu(subMenuTypes.APIs)">
+             [class.selected]="currentSubMenu === subMenuTypes.APIs" (click)="goToApisList()">
             <span class="fa fa-fw fa-bolt"></span>
             <div>APIs</div>
         </div>
@@ -35,12 +42,6 @@
             <div class="action" [class.active]="isRouteActive('/apis', true)">
                 <a routerLink="/apis"><span class="fa fa-fw fa-list"></span><span>View All APIs</span></a>
             </div>
-            <div class="action" [class.active]="isRouteActive('/apis/create')">
-                <a routerLink="/apis/create"><span class="pficon pficon-add-circle-o"></span><span>Create New API</span></a>
-            </div>
-            <div class="action" [class.active]="isRouteActive('/apis/import')">
-                <a routerLink="/apis/import"><span class="pficon pficon-import"></span><span>Import API</span></a>
-            </div>
         </div>
         <!-- Settings -->
         <div id="api-nav-detail-settings" class="api-nav-detail-item" *ngIf="currentSubMenu === subMenuTypes.Settings">
@@ -53,6 +54,16 @@
             </div>
             <div class="action" [class.active]="isRouteActive('/settings/validation')">
                 <a routerLink="/settings/validation"><span class="fa fa-fw fa-exclamation-triangle"></span><span>Validation</span></a>
+            </div>
+        </div>
+        <!-- Create -->
+        <div id="api-nav-detail-create" class="api-nav-detail-item" *ngIf="currentSubMenu === subMenuTypes.Plus">
+            <h3>Create</h3>
+            <div class="action" [class.active]="isRouteActive('/apis/create')">
+                <a routerLink="/apis/create"><span class="pficon pficon-add-circle-o"></span><span>Create New API</span></a>
+            </div>
+            <div class="action" [class.active]="isRouteActive('/apis/import')">
+                <a routerLink="/apis/import"><span class="pficon pficon-import"></span><span>Import API</span></a>
             </div>
         </div>
     </div>
