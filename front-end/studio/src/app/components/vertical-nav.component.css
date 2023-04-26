@@ -18,8 +18,10 @@
 }
 
 .api-nav-item-create {
+  font-weight: bold;
   display: flex;
   flex-direction: row;
+  align-items: center;
   color: white;
   border-bottom: 1px solid #030303;
   padding: 15px 10px 15px 10px;
@@ -85,10 +87,17 @@
   color: #39a5dc;
 }
 
-#api-vertical-nav .api-nav-item > span {
+#api-vertical-nav .api-nav-item span {
   font-size: 22px;
   display: inline-block;
 }
+
+.api-nav-item-create span {
+  font-size: 22px;
+  display: inline-block;
+  color: #50DC39;
+}
+
 #api-vertical-nav .api-nav-item > div {
   font-size: 14px;
 }

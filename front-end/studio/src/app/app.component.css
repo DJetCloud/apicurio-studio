@@ -5,7 +5,7 @@
 .vnav {
   grid-column-start: m;
   grid-column-end: m;
-  width: 120px;
+  width: 130px;
   overflow: hidden;
 }
 

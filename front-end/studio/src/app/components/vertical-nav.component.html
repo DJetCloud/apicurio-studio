@@ -6,7 +6,7 @@
         <!-- Create Button -->
         <div id="api-nav-item-create" class="api-nav-item-create"
              [class.selected]="currentSubMenu === subMenuTypes.Plus" (click)="toggleSubMenu(subMenuTypes.Plus)">
-            <img src="/assets/plus-icon.svg">
+             <span class="fa fa-fw fa-plus"></span>
             <div class="create">Create</div>
         </div>
 
@@ -39,7 +39,7 @@
              class="api-nav-item" 
              [class.active]="isAPIsRoute()"
              [class.selected]="currentSubMenu === subMenuTypes.APIs"
-             (click)="toggleSubMenu(subMenuTypes.APIs)">
+             (click)="goToApisList()">
 
             <span class="fa fa-fw fa-bolt"></span>
 
