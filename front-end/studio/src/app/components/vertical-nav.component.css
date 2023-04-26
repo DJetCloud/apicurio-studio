@@ -1,12 +1,14 @@
 #api-vertical-nav {
-  background-color: #292e34;
+  width: 135px;
   overflow: hidden;
   grid-column-start: nav;
   grid-column-end: nav;
   z-index: 100;
   padding: 0;
 }
+
 #api-vertical-nav .api-nav-item {
+  background-color: #292e34;
   display: flex;
   flex-direction: row;
   color: white;
@@ -18,18 +20,16 @@
 }
 
 .api-nav-item-create {
+  background-color: #292e34;
   font-weight: bold;
   display: flex;
   flex-direction: row;
   align-items: center;
   color: white;
-  border-bottom: 1px solid #030303;
   padding: 15px 10px 15px 10px;
-  text-align: center;
   border-right: 1px solid #030303;
   border-left: 2px solid transparent;
   margin-bottom: 20px;
-  background-color: #292e34;
 }
 
 #api-vertical-nav .api-nav-item div { 
@@ -170,4 +170,10 @@
 
 span.icon-bar {
   background-color: #888;
+}
+
+@media screen and (max-width: 768px) {
+  #api-vertical-nav {
+    width: 100%;
+  }
 }
