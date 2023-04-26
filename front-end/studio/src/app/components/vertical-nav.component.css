@@ -1,11 +1,12 @@
 #api-vertical-nav {
-  
+  width: 135px;
   overflow: hidden;
   grid-column-start: nav;
   grid-column-end: nav;
   z-index: 100;
   padding: 0;
 }
+
 #api-vertical-nav .api-nav-item {
   background-color: #292e34;
   display: flex;
@@ -169,4 +170,10 @@
 
 span.icon-bar {
   background-color: #888;
+}
+
+@media screen and (max-width: 768px) {
+  #api-vertical-nav {
+    width: 100%;
+  }
 }
