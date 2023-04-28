@@ -2,14 +2,77 @@
     border: 1px solid #ddd;
     background-color: white;
     padding-bottom: 25px;
-    width: 55%;
+}
+
+.title {
+    background: #F5F5F5;
+    border-bottom: 1px solid #F5F5F5;
+    height: 32.5px;
+    padding: 1px 1px 1px 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.title > th {
+    width: 25%;
+    display: flex;
+}
+td.action {
+    display: flex;
+    justify-content: center;
+}
+
+.current-session {
+    font-weight: 400;
+    color: #151515;
+}
+
+table {
+    width: 100%;
+}
+
+.title th {
+    padding: 5px; 
+}
+
+.login-session-info {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color:rgba(245, 245, 245, 1);
+}
+
+.login-session-info > td {
+    width: 25%;
+    display: flex;
+}
+
+.icon-button {
+    background-color: rgba(163, 0, 0, 1);
+    border: 1px solid rgba(139, 0, 0, 1);
+    width: 60px;
+    height: 25px;
+}
+
+.icon-button span {
+    color: white;
+}
+
+.title-of-login-session {
+    display: flex;
+    flex-direction: row;
 }
 .login-session {
+    display: flex;
+    flex-direction: row;
     background: #F5F5F5;
     border-bottom: 1px solid #F5F5F5;
 }
 
-.header {
+.header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;

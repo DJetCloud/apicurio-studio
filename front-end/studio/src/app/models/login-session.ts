@@ -1,12 +1,7 @@
 export class LoginSession {
-
+    id: string;
     lastAccess: string;
     ipAddress: string;
     name: string;
-    
-    constructor() {
-        this.lastAccess = "";
-        this.ipAddress = ""
-        this.name = ""
-    }
+    current: boolean;
 }
