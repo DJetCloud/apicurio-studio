@@ -26,8 +26,8 @@
                         </tr>
                         <tr class="login-session-info" *ngFor="let session of sessions">
                           <td><strong>{{ session.ipAddress }}</strong></td>
-                          <td>Last accessed on {{ session.lastAccess * 1000 | dateAsAgo }}</td>
-                          <td>{{session.name}}</td>
+                          <td>{{ session.lastAccess * 1000 | dateAsAgo }}</td>
+                          <td>{{ session.name }}</td>
                           <td class="action">
                                 <span class="current-session" *ngIf="session.current === true; else emptyCell">Current Session</span>
                                  <ng-template #emptyCell>  

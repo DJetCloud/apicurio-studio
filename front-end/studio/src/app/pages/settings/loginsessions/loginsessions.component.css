@@ -19,6 +19,7 @@
     width: 25%;
     display: flex;
 }
+
 td.action {
     display: flex;
     justify-content: center;
@@ -27,6 +28,10 @@ td.action {
 .current-session {
     font-weight: 400;
     color: #151515;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 2px 5px 2px 5px;
+    
 }
 
 table {
@@ -42,6 +47,7 @@ table {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     background-color:rgba(245, 245, 245, 1);
 }
 
@@ -53,23 +59,12 @@ table {
 .icon-button {
     background-color: rgba(163, 0, 0, 1);
     border: 1px solid rgba(139, 0, 0, 1);
-    width: 60px;
+    width: 65px;
     height: 25px;
 }
 
 .icon-button span {
     color: white;
-}
-
-.title-of-login-session {
-    display: flex;
-    flex-direction: row;
-}
-.login-session {
-    display: flex;
-    flex-direction: row;
-    background: #F5F5F5;
-    border-bottom: 1px solid #F5F5F5;
 }
 
 .header{
@@ -81,15 +76,10 @@ table {
     border-bottom: 1px solid white;
 }
 
-.name-and-description {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-}
-
 .login-sessions-title {
     line-height: 21px;
-    color: #000000;
+    color:rgba(0, 0, 0, 1);
+    font-weight: 400;
 }
 
 .main-title {
@@ -97,9 +87,9 @@ table {
     font-size: 24px;
 }
 
-.description {
-   font-weight: bold;
-   display: flex;
-   flex-direction: row;
-   align-items: center
-}
+@media screen and (max-width: 768px) {
+    .login-session-info > td {
+        width: 100%;
+        display: flex;
+    }
+  }

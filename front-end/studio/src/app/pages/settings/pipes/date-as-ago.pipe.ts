@@ -23,9 +23,9 @@ export class DateAsAgoPipe implements PipeTransform {
     if (Number.isNaN(seconds)) {
       return '';
     } else if (seconds <= 45) {
-      return 'a few seconds ago';
+      return 'A few seconds ago';
     } else if (seconds <= 90) {
-      return 'a minute ago';
+      return 'A minute ago';
     } else if (minutes <= 45) {
       return minutes + ' minutes ago';
     } else if (minutes <= 90) {
