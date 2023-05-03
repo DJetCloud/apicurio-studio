@@ -37,12 +37,9 @@ span.icon-bar {
 }
 
 @media screen and (max-width: 768px) {
- .vnav {
-  grid-column-start: m;
-  grid-column-end: m;
-  width: 130px;
-  overflow: hidden;
-  margin-top: 70px;
-  z-index: 999;
+
+ .app-body {
+  height: 1000px;
  }
+
 }
