@@ -83,6 +83,7 @@ import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/te
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
+import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
 
 @NgModule({
     imports: [
@@ -100,13 +101,16 @@ import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessio
         GenerateProjectWizardComponent, ActivityItemComponent, EditorDisconnectedDialogComponent, MockPageComponent,
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
-        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent
+        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent, DateAsAgoPipe
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,
         AuthenticationCanActivateGuard, ApiEditorPageGuard, CurrentUserService, TemplateService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports: [
+      DateAsAgoPipe
+    ]
 })
 export class AppModule {
 }
