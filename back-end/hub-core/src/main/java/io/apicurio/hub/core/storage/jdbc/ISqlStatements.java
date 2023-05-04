@@ -383,4 +383,14 @@ public interface ISqlStatements {
      * A statement to delete a single row on the template table
      */
     public String deleteApiTemplate();
+
+    String selectOrganizations();
+
+    String insertOrganization();
+
+    String updateOrganization();
+
+    String deleteOrganization();
+
+    String selectOrganizationById();
 }

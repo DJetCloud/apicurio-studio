@@ -20,26 +20,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
-import io.apicurio.hub.core.beans.ApiContentType;
-import io.apicurio.hub.core.beans.ApiDesign;
-import io.apicurio.hub.core.beans.ApiDesignChange;
-import io.apicurio.hub.core.beans.ApiDesignCollaborator;
-import io.apicurio.hub.core.beans.ApiDesignCommand;
-import io.apicurio.hub.core.beans.ApiDesignContent;
-import io.apicurio.hub.core.beans.ApiDesignType;
-import io.apicurio.hub.core.beans.ApiMock;
-import io.apicurio.hub.core.beans.ApiPublication;
-import io.apicurio.hub.core.beans.ApiTemplatePublication;
-import io.apicurio.hub.core.beans.CodegenProject;
-import io.apicurio.hub.core.beans.Contributor;
-import io.apicurio.hub.core.beans.Invitation;
-import io.apicurio.hub.core.beans.LinkedAccount;
-import io.apicurio.hub.core.beans.LinkedAccountType;
-import io.apicurio.hub.core.beans.SharingConfiguration;
-import io.apicurio.hub.core.beans.SharingInfo;
-import io.apicurio.hub.core.beans.SharingLevel;
-import io.apicurio.hub.core.beans.StoredApiTemplate;
-import io.apicurio.hub.core.beans.ValidationProfile;
+import io.apicurio.hub.core.beans.*;
 import io.apicurio.hub.core.exceptions.AlreadyExistsException;
 import io.apicurio.hub.core.exceptions.NotFoundException;
 
@@ -581,4 +562,13 @@ public interface IStorage {
      */
     public void deleteApiTemplate(String templateId) throws StorageException, NotFoundException;
 
+    Collection<Organization> listOrganizations(String user) throws StorageException;;
+
+    String createOrganization(String user, Organization org) throws StorageException, AlreadyExistsException;
+
+    Organization getOrganization(String orgId, String user) throws StorageException, NotFoundException;
+
+    void updateOrganization(Organization org) throws StorageException, NotFoundException;
+
+    void deleteOrganization(String orgId, String user) throws StorageException, NotFoundException;
 }

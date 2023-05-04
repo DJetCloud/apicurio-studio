@@ -681,4 +681,30 @@ public abstract class CommonSqlStatements implements ISqlStatements {
     public String deleteApiTemplate() {
         return "DELETE FROM templates WHERE template_id = ?";
     }
+
+    @Override
+    public String selectOrganizations() {
+        return "SELECT o.* FROM organizations o WHERE o.created_by = ?";
+    }
+
+    @Override
+    public String insertOrganization() {
+        return "INSERT INTO organizations (name, description, email, created_by, created_on) VALUES" +
+                "  (?, ?, ?, ?, ?)";
+    }
+
+    @Override
+    public String updateOrganization() {
+        return "UPDATE organizations SET name = ?, description = ?, email = ? WHERE id = ? AND created_by = ?";
+    }
+
+    @Override
+    public String deleteOrganization() {
+        return "DELETE FROM organizations WHERE id = ? AND created_by = ?";
+    }
+
+    @Override
+    public String selectOrganizationById() {
+        return "SELECT * FROM organizations WHERE id = ? AND created_by = ?";
+    }
 }

@@ -58,3 +58,7 @@ CREATE INDEX IDX_shar_2 ON sharing(level);
 CREATE TABLE templates (template_id VARCHAR(64) NOT NULL, name VARCHAR(64) NOT NULL, api_type VARCHAR(255) NOT NULL, description VARCHAR(1024), owner VARCHAR(255) NOT NULL, template CLOB NOT NULL);
 ALTER TABLE templates ADD PRIMARY KEY (template_id);
 CREATE INDEX IDX_temp_1 ON templates(api_type);
+
+CREATE TABLE organizations (id BIGINT AUTO_INCREMENT NOT NULL, name VARCHAR(64) NOT NULL, description VARCHAR(1024), email VARCHAR(255) NOT NULL, created_by VARCHAR(255) NOT NULL, created_on TIMESTAMP NOT NULL);
+ALTER TABLE organizations ADD PRIMARY KEY (id);
+CREATE INDEX IDX_orgs_1 ON organizations(created_by)

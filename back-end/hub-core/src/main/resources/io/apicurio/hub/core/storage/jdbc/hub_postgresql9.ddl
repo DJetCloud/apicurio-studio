@@ -73,3 +73,6 @@ LANGUAGE plpgsql;
 -- `template` column should be typed the same as `api_content`'s `data`
 CREATE TABLE templates (template_id VARCHAR(64) NOT NULL PRIMARY KEY, name VARCHAR(64) NOT NULL, api_type VARCHAR(255) NOT NULL, description VARCHAR(1024), owner VARCHAR(255) NOT NULL, template TEXT NOT NULL);
 CREATE INDEX IDX_temp_1 ON templates(api_type);
+
+CREATE TABLE organizations (id BIGSERIAL AUTO_INCREMENT NOT NULL PRIMARY KEY, name VARCHAR(64) NOT NULL, description VARCHAR(1024), email VARCHAR(255) NOT NULL, created_by VARCHAR(255) NOT NULL, created_on TIMESTAMP WITHOUT TIME ZONE NOT NULL);
+CREATE INDEX IDX_orgs_1 ON organizations(created_by)
