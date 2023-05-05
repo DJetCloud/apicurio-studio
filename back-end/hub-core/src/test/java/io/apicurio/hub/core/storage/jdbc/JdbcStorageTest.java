@@ -1782,7 +1782,7 @@ public class JdbcStorageTest {
         org.setCreatedOn(new Date());
 
         String orgId = storage.createOrganization(userName, org);
-
+        org.setId(orgId);
         org.setDescription("Set Description 2");
         org.setEmail("test2@test.email");
         storage.updateOrganization(org);
