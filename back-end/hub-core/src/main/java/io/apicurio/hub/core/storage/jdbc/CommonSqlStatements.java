@@ -684,7 +684,7 @@ public abstract class CommonSqlStatements implements ISqlStatements {
 
     @Override
     public String selectOrganizations() {
-        return "SELECT o.* FROM organizations o WHERE o.created_by = ?";
+        return "SELECT o.* FROM organizations o WHERE o.created_by = ? ORDER BY name ASC";
     }
 
     @Override

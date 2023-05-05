@@ -562,7 +562,7 @@ public interface IStorage {
      */
     public void deleteApiTemplate(String templateId) throws StorageException, NotFoundException;
 
-    Collection<Organization> listOrganizations(String user) throws StorageException;;
+    List<Organization> listOrganizations(String user) throws StorageException;;
 
     String createOrganization(String user, Organization org) throws StorageException, AlreadyExistsException;
 

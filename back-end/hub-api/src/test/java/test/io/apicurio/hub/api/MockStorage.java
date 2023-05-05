@@ -838,7 +838,7 @@ public class MockStorage implements IStorage {
     }
 
     @Override
-    public Collection<Organization> listOrganizations(String user) throws StorageException {
+    public List<Organization> listOrganizations(String user) throws StorageException {
         return null;
     }
 

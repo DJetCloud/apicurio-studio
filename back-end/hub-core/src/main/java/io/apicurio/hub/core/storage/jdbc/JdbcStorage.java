@@ -1755,7 +1755,7 @@ public class JdbcStorage implements IStorage {
     }
 
     @Override
-    public Collection<Organization> listOrganizations(String user) throws StorageException {
+    public List<Organization> listOrganizations(String user) throws StorageException {
         logger.debug("Getting a list of all Organizations for {}.", user);
         try {
             return this.jdbi.withHandle( handle -> {
@@ -1790,7 +1790,7 @@ public class JdbcStorage implements IStorage {
             if (e.getMessage().contains("Unique")) {
                 throw new AlreadyExistsException();
             } else {
-                throw new StorageException("Error inserting Linked Account.", e);
+                throw new StorageException("Error inserting organization.", e);
             }
         }
     }
