@@ -6,6 +6,7 @@ import io.apicurio.hub.core.config.HubConfiguration;
 import io.apicurio.hub.core.util.JsonUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpDelete;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -82,6 +83,34 @@ public class KeycloakDeviceSessionsProvider implements IDeviceSessionsProvider {
             }
         } catch (IllegalArgumentException e) {
             throw new IOException("Error getting linked account token.", e);
+        }
+    }
+
+    public void deleteSession(String sessionId) throws IOException {
+        String authServerRootUrl = config.getKeycloakAuthUrl();
+        String realm = config.getKeycloakRealm();
+
+        try {
+            String externalUrl = KeycloakUriBuilder.fromUri(authServerRootUrl)
+                    .path("/realms/{realm}/account/sessions/{sessionId}")
+                    .build(realm, sessionId).toString();
+            String token = this.security.getToken();
+
+            HttpDelete delete = new HttpDelete(externalUrl);
+            delete.addHeader("Authorization", "Bearer " + token);
+            delete.addHeader("Content-Type", "application/json");
+
+            try (CloseableHttpResponse response = httpClient.execute(delete)) {
+                if (response.getStatusLine().getStatusCode() != 204) {
+                    logger.error("Failed to access Keycloak: {} - {}",
+                            response.getStatusLine().getStatusCode(), response.getStatusLine().getReasonPhrase());
+                    throw new IOException(
+                            "Unexpected response from Keycloak: " + response.getStatusLine().getStatusCode() + "::"
+                                    + response.getStatusLine().getReasonPhrase());
+                }
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IOException("Error deleting of active session.", e);
         }
     }
 

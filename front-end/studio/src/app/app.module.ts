@@ -83,7 +83,8 @@ import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/te
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
-import { OrganisationOverviewComponent } from "./pages/settings/organisation-overview/organisation-overview/organisation-overview.component";
+import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
+
 @NgModule({
     imports: [
         BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
@@ -100,13 +101,16 @@ import { OrganisationOverviewComponent } from "./pages/settings/organisation-ove
         GenerateProjectWizardComponent, ActivityItemComponent, EditorDisconnectedDialogComponent, MockPageComponent,
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
-        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent, OrganisationOverviewComponent
+        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent, DateAsAgoPipe
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,
         AuthenticationCanActivateGuard, ApiEditorPageGuard, CurrentUserService, TemplateService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    exports: [
+      DateAsAgoPipe
+    ]
 })
 export class AppModule {
 }

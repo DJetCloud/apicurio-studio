@@ -39,7 +39,12 @@ public class DeviceSessionsResource implements IDeviceSessionsResource {
 
     @Override
     public void deleteSession(String sessionId) throws ServerError {
-
+        try {
+            keycloakProvider.deleteSession(sessionId);
+        } catch (IOException e) {
+            logger.error("Failed when delete the session by ID", e);
+            throw new ServerError(e);
+        }
     }
 
     private IDeviceSessionsProvider provider(boolean mock) {
