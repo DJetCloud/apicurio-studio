@@ -1,0 +1,13 @@
+.organisations-form {
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.organisations-global-menu > * {
+    display: inline;
+  }
+
+.organisations-global-menu {
+    margin-top: 10px;
+    margin-bottom: 30px;
+}

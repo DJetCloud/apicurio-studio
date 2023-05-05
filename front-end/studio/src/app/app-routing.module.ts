@@ -39,7 +39,7 @@ import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessio
 import {ApiTextEditorPageComponent, ApiTextEditorPageGuard} from "./pages/apis/{apiId}/editor/api-teditor.page";
 import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/template-publication.page";
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
-
+import { OrganisationOverviewComponent } from './pages/settings/organisation-overview/organisation-overview/organisation-overview.component';
 const routes: Routes = [
     {
         path: "",
@@ -84,6 +84,11 @@ const routes: Routes = [
     {
         path: "settings/login-sessions",
         component: LoginSessionsComponent,
+        canActivate: [AuthenticationCanActivateGuard]
+    },
+    {
+        path: "settings/organisations",
+        component: OrganisationOverviewComponent,
         canActivate: [AuthenticationCanActivateGuard]
     },
     {

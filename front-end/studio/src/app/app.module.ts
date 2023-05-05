@@ -83,7 +83,7 @@ import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/te
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
-
+import { OrganisationOverviewComponent } from "./pages/settings/organisation-overview/organisation-overview/organisation-overview.component";
 @NgModule({
     imports: [
         BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
@@ -100,7 +100,7 @@ import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessio
         GenerateProjectWizardComponent, ActivityItemComponent, EditorDisconnectedDialogComponent, MockPageComponent,
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
-        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent
+        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent, OrganisationOverviewComponent
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,

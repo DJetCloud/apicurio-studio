@@ -74,6 +74,9 @@
             <div class="action" [class.active]="isRouteActive('/settings/login-sessions')">
                 <a routerLink="/settings/login-sessions"><span class="fa fa-sign-in"></span><span>Login Session</span></a>
             </div>
+            <div class="action" [class.active]="isRouteActive('/settings/organisations')">
+                <a routerLink="/settings/organisations"><span class="fa fa-sign-in"></span><span>Organisations</span></a>
+            </div>
         </div>
         <!-- Create -->
         <div id="api-nav-detail-create" class="api-nav-detail-item" *ngIf="currentSubMenu === subMenuTypes.Plus">
