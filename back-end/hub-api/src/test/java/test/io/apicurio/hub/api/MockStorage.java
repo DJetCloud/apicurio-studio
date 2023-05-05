@@ -26,26 +26,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 
-import io.apicurio.hub.core.beans.ApiContentType;
-import io.apicurio.hub.core.beans.ApiDesign;
-import io.apicurio.hub.core.beans.ApiDesignChange;
-import io.apicurio.hub.core.beans.ApiDesignCollaborator;
-import io.apicurio.hub.core.beans.ApiDesignCommand;
-import io.apicurio.hub.core.beans.ApiDesignContent;
-import io.apicurio.hub.core.beans.ApiDesignType;
-import io.apicurio.hub.core.beans.ApiMock;
-import io.apicurio.hub.core.beans.ApiPublication;
-import io.apicurio.hub.core.beans.ApiTemplatePublication;
-import io.apicurio.hub.core.beans.CodegenProject;
-import io.apicurio.hub.core.beans.Contributor;
-import io.apicurio.hub.core.beans.Invitation;
-import io.apicurio.hub.core.beans.LinkedAccount;
-import io.apicurio.hub.core.beans.LinkedAccountType;
-import io.apicurio.hub.core.beans.SharingConfiguration;
-import io.apicurio.hub.core.beans.SharingInfo;
-import io.apicurio.hub.core.beans.SharingLevel;
-import io.apicurio.hub.core.beans.StoredApiTemplate;
-import io.apicurio.hub.core.beans.ValidationProfile;
+import io.apicurio.hub.core.beans.*;
 import io.apicurio.hub.core.exceptions.AlreadyExistsException;
 import io.apicurio.hub.core.exceptions.NotFoundException;
 import io.apicurio.hub.core.storage.IStorage;
@@ -854,5 +835,30 @@ public class MockStorage implements IStorage {
      */
     @Override
     public void deleteApiTemplate(String templateId) throws StorageException, NotFoundException {
+    }
+
+    @Override
+    public List<Organization> listOrganizations(String user) throws StorageException {
+        return null;
+    }
+
+    @Override
+    public String createOrganization(String user, Organization org) throws StorageException {
+        return null;
+    }
+
+    @Override
+    public Organization getOrganization(String orgId, String user) throws StorageException, NotFoundException {
+        return null;
+    }
+
+    @Override
+    public void updateOrganization(Organization org) throws StorageException {
+
+    }
+
+    @Override
+    public void deleteOrganization(String orgId, String user) throws StorageException, NotFoundException {
+
     }
 }

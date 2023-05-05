@@ -4,7 +4,7 @@
 
 CREATE TABLE apicurio (prop_name VARCHAR(255) NOT NULL, prop_value VARCHAR(255));
 ALTER TABLE apicurio ADD PRIMARY KEY (prop_name);
-INSERT INTO apicurio (prop_name, prop_value) VALUES ('db_version', 12);
+INSERT INTO apicurio (prop_name, prop_value) VALUES ('db_version', 13);
 
 CREATE TABLE accounts (user_id VARCHAR(255) NOT NULL, type VARCHAR(32) NOT NULL, linked_on TIMESTAMP, used_on TIMESTAMP, nonce VARCHAR(255));
 ALTER TABLE accounts ADD PRIMARY KEY (user_id, type);
@@ -58,3 +58,15 @@ CREATE INDEX IDX_shar_2 ON sharing(level);
 CREATE TABLE templates (template_id VARCHAR(64) NOT NULL, name VARCHAR(64) NOT NULL, api_type VARCHAR(255) NOT NULL, description VARCHAR(1024), owner VARCHAR(255) NOT NULL, template CLOB NOT NULL);
 ALTER TABLE templates ADD PRIMARY KEY (template_id);
 CREATE INDEX IDX_temp_1 ON templates(api_type);
+
+CREATE TABLE organizations (
+    id BIGINT AUTO_INCREMENT NOT NULL,
+    name VARCHAR(64) NOT NULL,
+    description VARCHAR(1024),
+    email VARCHAR(255) NOT NULL,
+    created_by VARCHAR(255) NOT NULL,
+    created_on TIMESTAMP NOT NULL,
+    CONSTRAINT uc_name UNIQUE (name)
+);
+ALTER TABLE organizations ADD PRIMARY KEY (id);
+CREATE INDEX IDX_orgs_1 ON organizations(created_by)

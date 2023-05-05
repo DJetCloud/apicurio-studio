@@ -33,6 +33,7 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import io.apicurio.hub.core.beans.*;
 import org.jdbi.v3.core.Handle;
 import org.jdbi.v3.core.Jdbi;
 import org.jdbi.v3.core.argument.CharacterStreamArgument;
@@ -45,26 +46,6 @@ import org.jdbi.v3.core.statement.StatementContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import io.apicurio.hub.core.beans.ApiContentType;
-import io.apicurio.hub.core.beans.ApiDesign;
-import io.apicurio.hub.core.beans.ApiDesignChange;
-import io.apicurio.hub.core.beans.ApiDesignCollaborator;
-import io.apicurio.hub.core.beans.ApiDesignCommand;
-import io.apicurio.hub.core.beans.ApiDesignContent;
-import io.apicurio.hub.core.beans.ApiDesignType;
-import io.apicurio.hub.core.beans.ApiMock;
-import io.apicurio.hub.core.beans.ApiPublication;
-import io.apicurio.hub.core.beans.ApiTemplatePublication;
-import io.apicurio.hub.core.beans.CodegenProject;
-import io.apicurio.hub.core.beans.Contributor;
-import io.apicurio.hub.core.beans.Invitation;
-import io.apicurio.hub.core.beans.LinkedAccount;
-import io.apicurio.hub.core.beans.LinkedAccountType;
-import io.apicurio.hub.core.beans.SharingConfiguration;
-import io.apicurio.hub.core.beans.SharingInfo;
-import io.apicurio.hub.core.beans.SharingLevel;
-import io.apicurio.hub.core.beans.StoredApiTemplate;
-import io.apicurio.hub.core.beans.ValidationProfile;
 import io.apicurio.hub.core.config.HubConfiguration;
 import io.apicurio.hub.core.exceptions.AlreadyExistsException;
 import io.apicurio.hub.core.exceptions.NotFoundException;
@@ -95,7 +76,7 @@ import io.apicurio.hub.core.storage.jdbc.mappers.ValidationProfileRowMapper;
 public class JdbcStorage implements IStorage {
     
     private static Logger logger = LoggerFactory.getLogger(JdbcStorage.class);
-    private static int DB_VERSION = 12;
+    private static int DB_VERSION = 13;
     private static final Object dbMutex = new Object();
 
     @Inject
@@ -1770,6 +1751,113 @@ public class JdbcStorage implements IStorage {
             throw nfe;
         } catch (Exception e) {
             throw new StorageException("Error deleting template.", e);
+        }
+    }
+
+    @Override
+    public List<Organization> listOrganizations(String user) throws StorageException {
+        logger.debug("Getting a list of all Organizations for {}.", user);
+        try {
+            return this.jdbi.withHandle( handle -> {
+                String statement = sqlStatements.selectOrganizations();
+                return handle.createQuery(statement)
+                        .bind(0, user)
+                        .mapToBean(Organization.class)
+                        .list();
+            });
+        } catch (Exception e) {
+            throw new StorageException("Error listing Organizations.", e);
+        }
+    }
+
+    @Override
+    public String createOrganization(String user, Organization org) throws StorageException, AlreadyExistsException {
+        logger.debug("Inserting an Organization {} for {}", org.getName(), user);
+        try {
+            return this.jdbi.withHandle( handle -> {
+                String statement = sqlStatements.insertOrganization();
+                return handle.createUpdate(statement)
+                        .bind(0, org.getName())
+                        .bind(1, org.getDescription())
+                        .bind(2, org.getEmail())
+                        .bind(3, org.getCreatedBy())
+                        .bind(4, org.getCreatedOn())
+                        .executeAndReturnGeneratedKeys("id")
+                        .mapTo(String.class)
+                        .one();
+            });
+        } catch (Exception e) {
+            if (e.getMessage().contains("Unique")) {
+                throw new AlreadyExistsException();
+            } else {
+                throw new StorageException("Error inserting organization.", e);
+            }
+        }
+    }
+
+    @Override
+    public Organization getOrganization(String orgId, String user) throws StorageException, NotFoundException {
+        logger.debug("Selecting an Organization: {}", orgId);
+        try {
+            return this.jdbi.withHandle( handle -> {
+                String statement = sqlStatements.selectOrganizationById();
+                return handle.createQuery(statement)
+                        .bind(0, orgId)
+                        .bind(1, user)
+                        .mapToBean(Organization.class)
+                        .one();
+            });
+        } catch (IllegalStateException e) {
+            throw new NotFoundException();
+        } catch (Exception e) {
+            throw new StorageException("Error getting organization.");
+        }
+    }
+
+    @Override
+    public void updateOrganization(Organization org) throws StorageException, NotFoundException {
+        logger.debug("Updating a organization with id: {}", org.getId());
+        try {
+            this.jdbi.withHandle(handle -> {
+                final String statement = sqlStatements.updateOrganization();
+                int rowCount = handle.createUpdate(statement)
+                        .bind(0, org.getName())
+                        .bind(1, org.getDescription())
+                        .bind(2, org.getEmail())
+                        .bind(3, org.getId())
+                        .bind(4, org.getCreatedBy())
+                        .execute();
+                if (rowCount == 0) {
+                    throw new NotFoundException();
+                }
+                return null;
+            });
+        } catch (NotFoundException nfe) {
+            throw nfe;
+        } catch (Exception e) {
+            throw new StorageException("Error updating organization.", e);
+        }
+    }
+
+    @Override
+    public void deleteOrganization(String orgId, String user) throws StorageException, NotFoundException {
+        logger.debug("Deleting a organization with id: {}", orgId);
+        try {
+            this.jdbi.withHandle(handle -> {
+                final String statement = sqlStatements.deleteOrganization();
+                int rowCount = handle.createUpdate(statement)
+                        .bind(0, orgId)
+                        .bind(1, user)
+                        .execute();
+                if (rowCount == 0) {
+                    throw new NotFoundException();
+                }
+                return null;
+            });
+        } catch (NotFoundException nfe) {
+            throw nfe;
+        } catch (Exception e) {
+            throw new StorageException("Error deleting organization.", e);
         }
     }
 }
