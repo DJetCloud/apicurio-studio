@@ -20,7 +20,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 import {ApisService} from "../../../services/apis.service";
 import {AbstractPageComponent} from "../../../components/page-base.component";
-import {ImportApi} from "../../../models/import-api.model";
+import {ImportApi} from "../../../models/api/import-api.model";
 import {Title} from "@angular/platform-browser";
 
 @Component({

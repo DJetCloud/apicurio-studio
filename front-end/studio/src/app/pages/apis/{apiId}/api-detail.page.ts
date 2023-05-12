@@ -19,10 +19,10 @@ import {Component} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {ApisService} from "../../../services/apis.service";
-import {Api} from "../../../models/api.model";
+import {Api} from "../../../models/api/api.model";
 import {ApiContributors} from "../../../models/api-contributors.model";
 import {AbstractPageComponent} from "../../../components/page-base.component";
-import {ApiDesignChange} from "../../../models/api-design-change.model";
+import {ApiDesignChange} from "../../../models/api/api-design-change.model";
 import {Title} from "@angular/platform-browser";
 import {IAuthenticationService} from "../../../services/auth.service";
 import {User} from "../../../models/user.model";

@@ -18,11 +18,11 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {ApiDefinition} from "../../../../models/api.model";
+import {ApiDefinition} from "../../../../models/api/api.model";
 import {AbstractPageComponent} from "../../../../components/page-base.component";
 import {Title} from "@angular/platform-browser";
 import {ApisService} from "../../../../services/apis.service";
-import {ImportApi} from "../../../../models/import-api.model";
+import {ImportApi} from "../../../../models/api/import-api.model";
 import {CommandFactory, Document, DocumentType, Library, Oas20Document, Oas30Document} from "@apicurio/data-models";
 import {Base64} from "js-base64";
 

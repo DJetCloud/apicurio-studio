@@ -18,7 +18,7 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {ApiDefinition} from "../../../../models/api.model";
+import {ApiDefinition} from "../../../../models/api/api.model";
 import {MockReference} from "../../../../models/mock-api.model";
 import {AbstractPageComponent} from "../../../../components/page-base.component";
 import {Title} from "@angular/platform-browser";

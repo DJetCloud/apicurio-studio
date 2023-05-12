@@ -26,7 +26,7 @@ import {
     SimpleChanges,
     ViewEncapsulation
 } from "@angular/core";
-import {ApiDefinition} from "../../../../models/api.model";
+import {ApiDefinition} from "../../../../models/api/api.model";
 import {CodeEditorMode, CodeEditorTheme} from "../../../../components/common/code-editor.component";
 
 /**

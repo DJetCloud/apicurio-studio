@@ -40,6 +40,7 @@ import {ApiTextEditorPageComponent, ApiTextEditorPageGuard} from "./pages/apis/{
 import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/template-publication.page";
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import { OrganisationOverviewComponent } from './pages/settings/organisation-overview/organisation-overview/organisation-overview.component';
+import { OrganisationEditorComponent } from './pages/settings/organisation-overview/organisation-overview/_components/organisation-editor.component';
 const routes: Routes = [
     {
         path: "",
@@ -89,6 +90,11 @@ const routes: Routes = [
     {
         path: "settings/organisations",
         component: OrganisationOverviewComponent,
+        canActivate: [AuthenticationCanActivateGuard]
+    },
+    {
+        path: "settings/organisations/create",
+        component: OrganisationEditorComponent,
         canActivate: [AuthenticationCanActivateGuard]
     },
     {

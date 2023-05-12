@@ -21,7 +21,7 @@ import {DropDownOption, DropDownOptionValue as Value} from '../../../../componen
 import {ApisService} from "../../../../services/apis.service";
 import {LinkedAccountsService} from "../../../../services/accounts.service";
 import {TemplateService} from "../../../../services/template.service";
-import {ApiDesignTemplate} from "../../../../models/api-design-template.model";
+import {ApiDesignTemplate} from "../../../../models/template/api-design-template.model";
 import {ConfigService} from "../../../../services/config.service";
 
 export interface CreateApiFormData {

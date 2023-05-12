@@ -21,7 +21,7 @@ import {ActivatedRoute} from "@angular/router";
 import {AbstractPageComponent} from "../../components/page-base.component";
 import {Title} from "@angular/platform-browser";
 import {TemplateService} from "../../services/template.service";
-import {StoredApiDesignTemplate} from "../../models/stored-api-design-template.model";
+import {StoredApiDesignTemplate} from "../../models/template/stored-api-design-template.model";
 import {TemplateEditorComponent} from "./_components/template-editor.component";
 import {ConfigService} from "../../services/config.service";
 import {ConfirmDeleteDialogComponent} from "../../components/dialogs/confirm-delete.component";

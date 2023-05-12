@@ -16,16 +16,16 @@
  */
 
 import {Injectable} from "@angular/core";
-import {ApiDesignTemplate} from "../models/api-design-template.model";
+import {ApiDesignTemplate} from "../models/template/api-design-template.model";
 import {AbstractHubService} from "./hub";
 import {HttpClient} from "@angular/common/http";
 import {IAuthenticationService} from "./auth.service";
 import {ConfigService} from "./config.service";
 import {ApiTypes} from "../models/api-types.enum";
-import {StoredApiDesignTemplate} from "../models/stored-api-design-template.model";
-import {NewApiTemplate} from "../models/new-api-template.model";
-import {UpdateApiTemplate} from "../models/update-api-template.model";
-import {ApiTemplateKinds} from "../models/api-template-kinds.enum";
+import {StoredApiDesignTemplate} from "../models/template/stored-api-design-template.model";
+import {NewApiTemplate} from "../models/template/new-api-template.model";
+import {UpdateApiTemplate} from "../models/template/update-api-template.model";
+import {ApiTemplateKinds} from "../models/template/api-template-kinds.enum";
 
 
 /**

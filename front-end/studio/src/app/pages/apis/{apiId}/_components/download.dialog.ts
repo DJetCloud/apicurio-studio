@@ -20,7 +20,7 @@ import {ModalDirective} from "ngx-bootstrap/modal";
 import {ApisService} from "../../../../services/apis.service";
 import {ClipboardService} from "ngx-clipboard";
 import {ConfigService} from "../../../../services/config.service";
-import {Api} from "../../../../models/api.model";
+import {Api} from "../../../../models/api/api.model";
 import {DropDownOption, DropDownOptionValue} from "../../../../components/common/drop-down.component";
 
 

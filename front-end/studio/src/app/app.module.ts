@@ -16,6 +16,7 @@
  */
 
 import {ClipboardModule} from "ngx-clipboard";
+import { CommonModule } from '@angular/common';  
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -84,10 +85,11 @@ import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
 import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
-
+import { OrganisationOverviewComponent } from "./pages/settings/organisation-overview/organisation-overview/organisation-overview.component";
+import { OrganisationEditorComponent } from "./pages/settings/organisation-overview/organisation-overview/_components/organisation-editor.component";
 @NgModule({
     imports: [
-        BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
+        CommonModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
         ApicurioCommonComponentsModule, ApicurioEditorModule, ClipboardModule
     ],
     declarations: [
@@ -101,7 +103,8 @@ import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
         GenerateProjectWizardComponent, ActivityItemComponent, EditorDisconnectedDialogComponent, MockPageComponent,
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
-        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent, DateAsAgoPipe
+        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent,
+        LoginSessionsComponent, DateAsAgoPipe, OrganisationOverviewComponent, OrganisationEditorComponent
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,

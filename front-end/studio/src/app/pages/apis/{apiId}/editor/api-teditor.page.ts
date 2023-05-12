@@ -17,7 +17,7 @@
 
 import {AfterViewInit, Component, HostListener, Injectable, NgZone, QueryList, ViewChildren} from "@angular/core";
 import {ActivatedRoute, CanDeactivate, Router} from "@angular/router";
-import {ApiDefinition} from "../../../../models/api.model";
+import {ApiDefinition} from "../../../../models/api/api.model";
 import {ApisService} from "../../../../services/apis.service";
 import {AbstractPageComponent} from "../../../../components/page-base.component";
 import {Title} from "@angular/platform-browser";

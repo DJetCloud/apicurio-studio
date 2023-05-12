@@ -18,7 +18,7 @@
 import {Component, Inject} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {Api} from "../../../../models/api.model";
+import {Api} from "../../../../models/api/api.model";
 import {AbstractPageComponent} from "../../../../components/page-base.component";
 import {IAuthenticationService} from "../../../../services/auth.service";
 import {LinkedAccount} from "../../../../models/linked-account.model";

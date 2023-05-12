@@ -30,7 +30,7 @@ import {
     CanDeactivate,
     Router
 } from "@angular/router";
-import {EditableApiDefinition} from "../../../../models/api.model";
+import {EditableApiDefinition} from "../../../../models/api/api.model";
 import {ApisService, IApiEditingSession} from "../../../../services/apis.service";
 import {AbstractPageComponent} from "../../../../components/page-base.component";
 import {DefaultSeverityRegistry, IValidationSeverityRegistry, Library, OtCommand} from "@apicurio/data-models";

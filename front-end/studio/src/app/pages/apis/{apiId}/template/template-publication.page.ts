@@ -18,11 +18,11 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {ApiDefinition} from "../../../../models/api.model";
+import {ApiDefinition} from "../../../../models/api/api.model";
 import {AbstractPageComponent} from "../../../../components/page-base.component";
 import {Title} from "@angular/platform-browser";
 import {ApisService} from "../../../../services/apis.service";
-import {NewApiTemplate} from "../../../../models/new-api-template.model";
+import {NewApiTemplate} from "../../../../models/template/new-api-template.model";
 import {ApiTemplatePublication} from "../../../../models/api-template-publication.model";
 
 @Component({

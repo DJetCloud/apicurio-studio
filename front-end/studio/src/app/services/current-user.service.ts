@@ -21,7 +21,7 @@ import {HttpClient} from "@angular/common/http";
 import {IAuthenticationService} from "./auth.service";
 import {ConfigService} from "./config.service";
 import {AbstractHubService} from "./hub";
-import {ApiDesignChange} from "../models/api-design-change.model";
+import {ApiDesignChange} from "../models/api/api-design-change.model";
 import {User} from "../models/user.model";
 
 /**

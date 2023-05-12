@@ -19,7 +19,7 @@ import {Component, OnDestroy} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 
 import {ApisService} from "../../services/apis.service";
-import {Api} from "../../models/api.model";
+import {Api} from "../../models/api/api.model";
 import {ArrayUtils} from "../../util/common";
 import {AbstractPageComponent} from "../../components/page-base.component";
 import {Title} from "@angular/platform-browser";

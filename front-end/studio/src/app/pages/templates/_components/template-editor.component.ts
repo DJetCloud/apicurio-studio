@@ -16,7 +16,7 @@
  */
 
 import {Component, EventEmitter, Output} from "@angular/core";
-import {StoredApiDesignTemplate} from "../../../models/stored-api-design-template.model";
+import {StoredApiDesignTemplate} from "../../../models/template/stored-api-design-template.model";
 import {TemplateService} from "../../../services/template.service";
 import {
     DropDownOption,
@@ -24,13 +24,7 @@ import {
 } from "../../../components/common/drop-down.component";
 import {ConfigService} from "../../../services/config.service";
 import {CodeEditorMode, CodeEditorTheme} from "../../../components/common/code-editor.component";
-
-export interface TemplateModel {
-    type: string;
-    name: string;
-    description: string;
-    document: string;
-}
+import { TemplateModel } from "../../../models/template/template.model";
 
 /**
  * The template edit form component
@@ -52,12 +46,7 @@ export class TemplateEditorComponent {
 
     @Output() onSubmit: EventEmitter<void> = new EventEmitter<void>();
 
-    public model: TemplateModel = {
-        type: "",
-        name: "",
-        description: "",
-        document: ""
-    };
+    public model: TemplateModel;
     private toptions: DropDownOption[];
 
     constructor(private templateService: TemplateService, private config: ConfigService) {

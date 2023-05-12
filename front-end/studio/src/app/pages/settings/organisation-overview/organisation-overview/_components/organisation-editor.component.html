@@ -1,3 +1,56 @@
-<div class="template-editor container-fluid" *ngIf="isOpen()">
-    hgfhfghfgh
+<div *ngIf="isOpen()">
+<div class="organisation-editor container-fluid">
+    <div id="api-breadcrumb-bar organisations-breadcumb">
+        <breadcrumbs>
+            <li breadcrumb label="Settings" [route]="[ '/settings' ]"></li>
+            <li breadcrumb label="Create Organisation" class="active"></li>
+        </breadcrumbs>
+    </div>
+    <div class="row">
+        <div class="panel panel-default col-sm-10">
+            <div class="panel-body">
+                <h1>{{ pageHeader() }}</h1>
+            
+                <form id="organisation-form" class="form-horizontal container-fluid" #templateForm="ngForm">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label required" for="title">Name</label>
+                        <div class="col-sm-4">
+                            <input name="title" type="text" id="title" class="form-control"
+                                   placeholder="Enter a name for the organization..." required #templateName="ngModel"
+                                   [(ngModel)]="model.name">
+                            <form-error-message [inputModel]="templateName" [type]="'required'">Name is required.</form-error-message>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label required" for="email">Email</label>
+                        <div class="col-sm-10">
+                            <input name="email" type="text" id="email" class="form-control"
+                                    placeholder="Enter an email for the organization..." required #templateEmail="ngModel"
+                                    [(ngModel)]="model.email">
+                            <form-error-message [inputModel]="templateEmail" [type]="'required'">Email is required.</form-error-message>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="description">Description</label>
+                        <div class="col-sm-10">
+                                            <textarea name="description" type="text" id="description" class="form-control"
+                                                      placeholder="Enter a description for the organization..." #templateDescription="ngModel"
+                                                      [(ngModel)]="model.description"> </textarea>
+                        </div>
+                    </div>
+                    
+                <div class="col-sm-12 footer-panel">
+                    <div class="notice-of-required">The fields marked with <span class="required-icon">*</span> are required.</div>
+                    <div class="actios">
+                        <button class="btn btn-default pull-right cancel" (click)="cancel()">Cancel</button>
+                        <button class="btn btn-primary pull-right create" (click)="submit()" [disabled]="!isValid()">{{submitText()}}</button>
+                    </div>
+                    
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
