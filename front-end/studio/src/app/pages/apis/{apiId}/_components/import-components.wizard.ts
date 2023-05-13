@@ -19,7 +19,7 @@ import {Component, QueryList, ViewChildren} from "@angular/core";
 import {ModalDirective} from "ngx-bootstrap/modal";
 import {ApisService} from "../../../../services/apis.service";
 import {ImportedComponent} from "../editor/_models/imported-component.model";
-import {Api, ApiDefinition} from "../../../../models/api/api.model";
+import {Api, ApiDefinition} from "../../../../models/api.model";
 import {ComponentType} from "../editor/_models/component-type.model";
 import {DataTableColumn, DataTableRow} from "../../../../components/common/data-table.component";
 import * as moment from "moment";

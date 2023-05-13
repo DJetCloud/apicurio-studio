@@ -1,4 +1,4 @@
-import { OrganisationModel } from "./organisation/organisation.model";
+import { OrganisationModel } from "./organisation.model";
 
 export interface StoredOrganisation extends OrganisationModel {
 

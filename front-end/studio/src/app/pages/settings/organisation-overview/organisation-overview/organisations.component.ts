@@ -1,19 +1,18 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
-import { OrganisationOverviewService } from '../../../../services/organisation.service';
-import { AbstractPageComponent } from '../../../../components/page-base.component';
-
+import {Component, ViewChild} from '@angular/core';
+import {OrganisationOverviewService} from '../../../../services/organisation.service';
+import {AbstractPageComponent} from '../../../../components/page-base.component';
 import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
-import { OrganisationModel } from '../../../../models/organisation/organisation.model';
-import { StoredOrganisation } from '../../../../models/stored-organisation.model';
-import { OrganisationEditorComponent } from './_components/organisation-editor.component';
-import { ConfirmDeleteDialogComponent } from '../../../../components/dialogs/confirm-delete.component';
+import {OrganisationModel} from '../../../../models/organisation.model';
+import {StoredOrganisation} from '../../../../models/stored-organisation.model';
+import {OrganisationEditorComponent} from './_components/organisation-editor.component';
+import {ConfirmDeleteDialogComponent} from '../../../../components/dialogs/confirm-delete.component';
 @Component({
-  selector: 'app-organisation-overview',
-  templateUrl: './organisation-overview.component.html',
-  styleUrls: ['./organisation-overview.component.css']
+  selector: 'app-organisations-overview',
+  templateUrl: './organisations.component.html',
+  styleUrls: ['./organisations.component.css']
 })
-export class OrganisationOverviewComponent extends AbstractPageComponent {
+export class OrganisationsComponent extends AbstractPageComponent {
 
   private organisations: OrganisationModel[];
 

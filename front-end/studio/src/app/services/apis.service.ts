@@ -15,16 +15,16 @@
  * limitations under the License.
  */
 
-import {Api, ApiDefinition, EditableApiDefinition} from "../models/api/api.model";
+import {Api, ApiDefinition, EditableApiDefinition} from "../models/api.model";
 import {ApiContributor, ApiContributors} from "../models/api-contributors.model";
-import {NewApi} from "../models/api/new-api.model";
-import {ImportApi} from "../models/api/import-api.model";
+import {NewApi} from "../models/new-api.model";
+import {ImportApi} from "../models/import-api.model";
 import {ICommand, MarshallCompat, OtCommand} from "@apicurio/data-models";
 import {VersionedAck} from "../models/ack.model";
 import {ApiCollaborator} from "../models/api-collaborator.model";
 import {Invitation} from "../models/invitation.model";
 import {ApiEditorUser} from "../models/editor-user.model";
-import {ApiDesignChange} from "../models/api/api-design-change.model";
+import {ApiDesignChange} from "../models/api-design-change.model";
 import {AbstractHubService} from "./hub";
 import {PublishApi} from "../models/publish-api.model";
 import {HttpClient, HttpHeaders, HttpResponse} from "@angular/common/http";
@@ -43,7 +43,7 @@ import {DeferredAction} from "../models/deferred.model";
 import {SharingConfiguration} from "../models/sharing-config.model";
 import {UpdateSharingConfiguration} from "../models/update-sharing-config.model";
 import {ApiTemplatePublication} from "../models/api-template-publication.model";
-import {NewApiTemplate} from "../models/template/new-api-template.model";
+import {NewApiTemplate} from "../models/new-api-template.model";
 
 
 export interface IConnectionHandler {

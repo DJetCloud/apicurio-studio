@@ -3,7 +3,8 @@
     <div id="api-breadcrumb-bar organisations-breadcumb">
         <breadcrumbs>
             <li breadcrumb label="Settings" [route]="[ '/settings' ]"></li>
-            <li breadcrumb label="Create Organisation" class="active"></li>
+            <li breadcrumb label="Organisations" [route]="[ '/settings/organisations' ]"></li>
+            <li breadcrumb [label]="model.name" [route]="[ '/settings/organisations', model.id ]"></li>
         </breadcrumbs>
     </div>
     <div class="row">

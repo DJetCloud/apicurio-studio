@@ -16,7 +16,7 @@
  */
 
 import {Component, EventEmitter, Output, Input} from "@angular/core";
-import {Api} from "../../../models/api/api.model";
+import {Api} from "../../../models/api.model";
 
 
 @Component({

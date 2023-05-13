@@ -1,4 +1,4 @@
-import {ApiDefinition} from './app/models/api/api.model';
+import {ApiDefinition} from './app/models/api.model';
 import {ApiEditorComponent} from "./app/pages/apis/{apiId}/editor/editor.component";
 import {ApicurioCommonComponentsModule} from "./app/common-components.module";
 import {ApicurioEditorModule} from "./app/editor.module";

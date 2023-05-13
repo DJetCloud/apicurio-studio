@@ -5,14 +5,17 @@
     </breadcrumbs>
 </div>
 
-    
+<page-error [error]="pageError" *ngIf="pageError"></page-error>
+<div class="container-fluid" *ngIf="!pageError">
+    <div class="row" style="min-height: 35px"></div>
+<div class="row row-cards-pf">
             <div class="col-xs-12 col-sm-3">
                 <settings-nav tab="organisations"></settings-nav>
             </div>
             
 <div class="container-fluid container-organisations">
     <div *ngIf="isLoaded('organisations')">
-        <div class="col-xs-12 col-sm-9 organisations">
+        <div class="col-xs-12 col-sm-8 organisations">
             
 
                 <div class="organisations-global-menu">
@@ -46,6 +49,8 @@
                         </tr>
                         </tbody>
                     </table>
+        </div>
+        </div>
         </div>
         </div>
         </div>

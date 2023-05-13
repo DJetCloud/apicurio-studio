@@ -85,8 +85,8 @@ import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
 import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
-import { OrganisationOverviewComponent } from "./pages/settings/organisation-overview/organisation-overview/organisation-overview.component";
-import { OrganisationEditorComponent } from "./pages/settings/organisation-overview/organisation-overview/_components/organisation-editor.component";
+import {OrganisationsComponent} from "./pages/settings/organisation-overview/organisation-overview/organisations.component";
+import {OrganisationEditorComponent} from "./pages/settings/organisation-overview/organisation-overview/_components/organisation-editor.component";
 @NgModule({
     imports: [
         CommonModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
@@ -104,7 +104,7 @@ import { OrganisationEditorComponent } from "./pages/settings/organisation-overv
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
         DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent,
-        LoginSessionsComponent, DateAsAgoPipe, OrganisationOverviewComponent, OrganisationEditorComponent
+        LoginSessionsComponent, DateAsAgoPipe, OrganisationsComponent, OrganisationEditorComponent
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,

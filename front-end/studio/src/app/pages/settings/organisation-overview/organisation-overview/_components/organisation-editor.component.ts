@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { OrganisationOverviewService } from '../../../../../services/organisation.service';
 import { ConfigService } from '../../../../../services/config.service';
 import { StoredOrganisation } from '../../../../../models/stored-organisation.model';
-import { OrganisationModel } from '../../../../../models/organisation/organisation.model';
+import { OrganisationModel } from '../../../../../models/organisation.model';
 
 @Component({
   selector: 'organisation-editor',

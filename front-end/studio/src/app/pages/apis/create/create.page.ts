@@ -20,10 +20,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 import {ApisService} from "../../../services/apis.service";
 import {CreateApiFormComponent, CreateApiFormData} from "./_components/create-form.component";
-import {NewApi} from "../../../models/api/new-api.model";
+import {NewApi} from "../../../models/new-api.model";
 import {AbstractPageComponent} from "../../../components/page-base.component";
 import {Title} from "@angular/platform-browser";
-import {ImportApi} from "../../../models/api/import-api.model";
+import {ImportApi} from "../../../models/import-api.model";
 import {Base64} from "js-base64";
 import {TemplateService} from "../../../services/template.service";
 

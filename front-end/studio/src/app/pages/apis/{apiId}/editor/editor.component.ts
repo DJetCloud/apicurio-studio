@@ -27,7 +27,7 @@ import {
     ViewChild,
     ViewEncapsulation
 } from "@angular/core";
-import {ApiDefinition} from "../../../../models/api/api.model";
+import {ApiDefinition} from "../../../../models/api.model";
 import {
     CombinedVisitorAdapter,
     CommandFactory,

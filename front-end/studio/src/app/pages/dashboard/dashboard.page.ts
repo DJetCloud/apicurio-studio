@@ -18,7 +18,7 @@
 import {Component} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 
-import {Api} from "../../models/api/api.model";
+import {Api} from "../../models/api.model";
 import {IAuthenticationService} from "../../services/auth.service";
 import {User} from "../../models/user.model";
 import {ApisService} from "../../services/apis.service";
@@ -26,7 +26,7 @@ import {AbstractPageComponent} from "../../components/page-base.component";
 import {LinkedAccountsService} from "../../services/accounts.service";
 import {LinkedAccount} from "../../models/linked-account.model";
 import {Title} from "@angular/platform-browser";
-import {ApiDesignChange} from "../../models/api/api-design-change.model";
+import {ApiDesignChange} from "../../models/api-design-change.model";
 import {CurrentUserService} from "../../services/current-user.service";
 
 /**

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OrganisationModel } from '../models/organisation/organisation.model';
+import { OrganisationModel } from '../models/organisation.model';
 import {AbstractHubService} from "./hub";
 import {IAuthenticationService} from "./auth.service";
 import {HttpClient} from '@angular/common/http';

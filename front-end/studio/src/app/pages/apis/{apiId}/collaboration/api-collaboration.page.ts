@@ -19,7 +19,7 @@ import {Component, Inject, QueryList, ViewChildren} from "@angular/core";
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {ApisService} from "../../../../services/apis.service";
-import {Api} from "../../../../models/api/api.model";
+import {Api} from "../../../../models/api.model";
 import {AbstractPageComponent} from "../../../../components/page-base.component";
 import {ApiCollaborator} from "../../../../models/api-collaborator.model";
 import {Invitation} from "../../../../models/invitation.model";

@@ -26,7 +26,7 @@ import {ApisService} from "../../../../services/apis.service";
 import {NewCodegenProject} from "../../../../models/new-codegen-project.model";
 import {CodegenProject} from "../../../../models/codegen-project.model";
 import {UpdateCodegenProject} from "../../../../models/update-codegen-project.model";
-import {Api} from "../../../../models/api/api.model";
+import {Api} from "../../../../models/api.model";
 
 
 export interface GenerateProjectWizardModel {
