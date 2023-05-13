@@ -1,5 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
-import {OrganisationOverviewService} from '../../../../services/organisation.service';
+import {OrganisationService} from '../../../../services/organisation.service';
 import {AbstractPageComponent} from '../../../../components/page-base.component';
 import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
@@ -20,40 +20,40 @@ export class OrganisationsComponent extends AbstractPageComponent {
   @ViewChild("confirmDeleteModal", { static: true }) confirmDeleteModal: ConfirmDeleteDialogComponent;
 
 
-  constructor(private organisationOverview: OrganisationOverviewService, route: ActivatedRoute, titleService: Title) {
-  super(route, titleService);
+  constructor(private organisationService: OrganisationService, route: ActivatedRoute, titleService: Title) {
+    super(route, titleService);
   }
 
-    protected pageTitle(): string {
-      return "DJAI - Settings - Organisations";
-    }
-
-    public loadAsyncPageData(): void {
-      this.organisationOverview.getOverviewInformation().then( organisations => {
-          this.organisations = organisations;
-          this.loaded("organisations");
-      }).catch( error => {
-          this.error(error);
-      });
-    }
-
-    public createOrganisation() {
-      this.organisationCreator.open();
-    }
-
-    public editOrganisation(organistaion: StoredOrganisation) {
-      this.organisationCreator.open(organistaion);
-    }
-
-    public deleteOrganisation(orgId: string) {
-      this.confirmDeleteModal.onDelete.subscribe(_ =>
-          this.organisationOverview.deleteStoredOrganisation(orgId).then(_ => {
-              this.loadAsyncPageData();
-          }).catch(error => {
-              this.error(error);
-          })
-      );
-      this.confirmDeleteModal.open();
+  protected pageTitle(): string {
+    return "DJAI - Settings - Organisations";
   }
 
+  public loadAsyncPageData(): void {
+    this.organisationService.getOverviewInformation().then(organisations => {
+      this.organisations = organisations;
+      this.loaded("organisations");
+    }).catch(error => {
+      this.error(error);
+    });
   }
+
+  public createOrganisation() {
+    this.organisationCreator.open();
+  }
+
+  public editOrganisation(organistaion: StoredOrganisation) {
+    this.organisationCreator.open(organistaion);
+  }
+
+  public deleteOrganisation(orgId: string) {
+    this.confirmDeleteModal.onDelete.subscribe(_ =>
+      this.organisationService.deleteStoredOrganisation(orgId).then(_ => {
+        this.loadAsyncPageData();
+      }).catch(error => {
+        this.error(error);
+      })
+    );
+    this.confirmDeleteModal.open();
+  }
+
+}

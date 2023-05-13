@@ -93,7 +93,7 @@ const routes: Routes = [
         canActivate: [AuthenticationCanActivateGuard]
     },
     {
-        path: "settings/organisations/create",
+        path: "settings/organisations/:id",
         component: OrganisationEditorComponent,
         canActivate: [AuthenticationCanActivateGuard]
     },

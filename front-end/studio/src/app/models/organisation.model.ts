@@ -2,7 +2,7 @@ export class OrganisationModel {
     id: string;
     name: string;
     description: string;
-    createdBy: string;
+    createdBy: Date;
     createdOn: Date;
     email:string;
 }
