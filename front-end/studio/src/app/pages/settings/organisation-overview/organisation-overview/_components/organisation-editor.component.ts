@@ -15,7 +15,6 @@ export class OrganisationEditorComponent {
   model: OrganisationModel;
   createOrganisation: boolean = false;
   public _isOpen: boolean = false;
-  public _isLoaded: boolean = false;
 
   public _mode: string = "create";
   orgId: string;
@@ -45,7 +44,6 @@ export class OrganisationEditorComponent {
       this.initializeModel();
     }
     this._isOpen = true;
-    this._isLoaded = true;
   }
 
   public cancel() {
@@ -106,7 +104,6 @@ export class OrganisationEditorComponent {
       : "Save";
   }
 
-
   public pageHeader(): string {
     return this._mode == "create"
       ? "Create Organisation"
@@ -115,10 +112,5 @@ export class OrganisationEditorComponent {
 
   public isOpen(): boolean {
     return this._isOpen;
-  }
-
-
-  public isLoaded(): boolean {
-    return this._isLoaded;
   }
 }
