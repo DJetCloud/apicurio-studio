@@ -31,7 +31,7 @@ td.action {
     border: 1px solid black;
     border-radius: 20px;
     padding: 2px 5px 2px 5px;
-    
+    font-size: x-small;
 }
 
 table {
@@ -40,7 +40,6 @@ table {
 
 .title th {
     padding: 5px; 
-    font-size: x-small;
 }
 
 .login-session-info {
@@ -50,7 +49,6 @@ table {
     justify-content: space-between;
     align-items: center;
     background-color:rgba(245, 245, 245, 1);
-    font-size: x-small;
 }
 
 .login-session-info > td {
