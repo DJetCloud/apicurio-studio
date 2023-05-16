@@ -85,12 +85,14 @@ import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
 import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import {OrganisationsComponent} from "./pages/settings/organisation-overview/organisation-overview/organisations.component";
 import {OrganisationEditorComponent} from "./pages/settings/organisation-overview/organisation-overview/_components/organisation-editor.component";
 @NgModule({
     imports: [
         CommonModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
-        ApicurioCommonComponentsModule, ApicurioEditorModule, ClipboardModule
+        ApicurioCommonComponentsModule, ApicurioEditorModule, ClipboardModule, ReactiveFormsModule
     ],
     declarations: [
         AppComponent, DashboardPageComponent, BreadcrumbsComponent, BreadcrumbComponent, PageErrorComponent,
