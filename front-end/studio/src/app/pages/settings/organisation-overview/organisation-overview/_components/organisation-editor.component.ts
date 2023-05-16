@@ -2,13 +2,15 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {OrganisationService} from '../../../../../services/organisation.service';
 import {ConfigService} from '../../../../../services/config.service';
 import {OrganisationModel} from '../../../../../models/organisation.model';
-
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {emailValidator} from '../../email-validator.directive';
 @Component({
   selector: 'organisation-editor',
   templateUrl: './organisation-editor.component.html',
   styleUrls: ['./organisation-editor.component.css']
 })
 export class OrganisationEditorComponent {
+  reactiveForm: FormGroup;
 
   @Output() onCreateOrganisation = new EventEmitter<OrganisationModel>();
 
@@ -23,6 +25,41 @@ export class OrganisationEditorComponent {
 
   constructor(private organisationService: OrganisationService, private config: ConfigService) {
     this.createOrganisation = false;
+    this.model = {} as OrganisationModel;
+  }
+
+  ngOnInit() {
+    this.reactiveForm = new FormGroup({
+      name: new FormControl(this.model.name, [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(20),
+      ]),
+      email: new FormControl(this.model.email, [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(30),
+        emailValidator(),
+      ]),
+      description: new FormControl(this.model.description, [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.maxLength(100),
+      ]),
+
+    });
+  }
+
+  get name() {
+    return this.reactiveForm.get('name')!;
+  }
+
+  get email() {
+    return this.reactiveForm.get('email')!;
+  }
+
+  get description() {
+    return this.reactiveForm.get('description')!;
   }
 
   public initializeModelFromEntity(entity: OrganisationModel): void {
@@ -64,7 +101,7 @@ export class OrganisationEditorComponent {
   }
 
   public isValid(): boolean {
-    return !!this.model.name?.trim() && !!this.model.email?.trim();
+    return !!this.model.name?.trim() && !!this.model.email?.trim() && !!this.model.description?.trim();
   }
 
   public submit() {
@@ -96,6 +133,7 @@ export class OrganisationEditorComponent {
       console.error(error);
       this.cancel();
     })
+
   }
 
   public submitText(): string {
