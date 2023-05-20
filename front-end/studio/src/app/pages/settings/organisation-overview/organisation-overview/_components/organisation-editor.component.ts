@@ -1,9 +1,15 @@
-import {Component, EventEmitter, Output} from '@angular/core';
-import {OrganisationService} from '../../../../../services/organisation.service';
-import {ConfigService} from '../../../../../services/config.service';
-import {OrganisationModel} from '../../../../../models/organisation.model';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {emailValidator} from '../../email-validator.directive';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { OrganisationService } from '../../../../../services/organisation.service';
+import { ConfigService } from '../../../../../services/config.service';
+import { OrganisationModel } from '../../../../../models/organisation.model';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { emailValidator } from '../../email-validator.directive';
+import {
+  AbstractControl,
+  FormBuilder,
+} from '@angular/forms';
+import { StoredOrganisation } from '../../../../../models/stored-organisation.model';
+import { UpdateOrganisation } from '../../../../../models/update-organisation-template.model';
 @Component({
   selector: 'organisation-editor',
   templateUrl: './organisation-editor.component.html',
@@ -11,6 +17,7 @@ import {emailValidator} from '../../email-validator.directive';
 })
 export class OrganisationEditorComponent {
   reactiveForm: FormGroup;
+  submitted = false;
 
   @Output() onCreateOrganisation = new EventEmitter<OrganisationModel>();
 
@@ -21,60 +28,29 @@ export class OrganisationEditorComponent {
   public _mode: string = "create";
   orgId: string;
 
+
   @Output() onSubmit: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private organisationService: OrganisationService, private config: ConfigService) {
+  constructor(private organisationService: OrganisationService, private config: ConfigService, private formBuilder: FormBuilder) {
     this.createOrganisation = false;
     this.model = {} as OrganisationModel;
   }
 
-  ngOnInit() {
-    this.reactiveForm = new FormGroup({
-      name: new FormControl(this.model.name, [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(20),
-      ]),
-      email: new FormControl(this.model.email, [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(30),
-        emailValidator(),
-      ]),
-      description: new FormControl(this.model.description, [
-        Validators.required,
-        Validators.minLength(10),
-        Validators.maxLength(100),
-      ]),
-
-    });
-  }
-
-  get name() {
-    return this.reactiveForm.get('name')!;
-  }
-
-  get email() {
-    return this.reactiveForm.get('email')!;
-  }
-
-  get description() {
-    return this.reactiveForm.get('description')!;
-  }
-
-  public initializeModelFromEntity(entity: OrganisationModel): void {
+  public initializeModelFromEntity(entity: UpdateOrganisation): void {
     this.model = {
-      id: entity.id,
       name: entity.name,
       email: entity.email,
       description: entity.description,
       createdBy: entity.createdBy,
       createdOn: entity.createdOn,
+      id: entity.id
     };
     this._mode = "edit";
+    this.orgId = entity.orgId;
   }
+  
 
-  public open(entity?: OrganisationModel) {
+  public open(entity?: UpdateOrganisation) {
     if (entity) {
       this.initializeModelFromEntity(entity);
     } else {
@@ -93,15 +69,10 @@ export class OrganisationEditorComponent {
       description: "",
       email: "",
       id: null,
-      createdBy: new Date(),
+      createdBy: "",
       createdOn: new Date(),
-
-    };
+    }
     this._mode = "create";
-  }
-
-  public isValid(): boolean {
-    return !!this.model.name?.trim() && !!this.model.email?.trim() && !!this.model.description?.trim();
   }
 
   public submit() {
@@ -113,17 +84,16 @@ export class OrganisationEditorComponent {
         email: this.model.email,
         id: this.model.id,
         createdBy: this.model.createdBy,
-        createdOn: this.model.createdBy,
+        createdOn: this.model.createdOn,
       });
     } else {
       action = this.organisationService.updateStoredOrganisation(this.orgId, {
-        id: this.model.id,
         name: this.model.name,
         description: this.model.description,
         email: this.model.email,
+        id: this.model.id,
         createdBy: this.model.createdBy,
-        createdOn: this.model.createdOn
-
+        createdOn: this.model.createdOn,
       });
     }
     action.then(_ => {

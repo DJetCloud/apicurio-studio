@@ -5,7 +5,7 @@ import {IAuthenticationService} from "./auth.service";
 import {HttpClient} from '@angular/common/http';
 import {ConfigService} from "./config.service";
 import {NewOrganisation} from '../models/new-organisation.model';
-import {UpdateOrganisationTemplate} from '../models/update-organisation-template.model';
+import {UpdateOrganisation} from '../models/update-organisation-template.model';
 @Injectable({
   providedIn: 'root'
 })
@@ -38,7 +38,7 @@ export class OrganisationService extends AbstractHubService {
     });
     let options: any = this.options({ "Accept": "application/json" });
 
-    return this.httpPut<UpdateOrganisationTemplate>(organisationTemplateUrl, organisationTemplate, options);
+    return this.httpPut<OrganisationModel>(organisationTemplateUrl, organisationTemplate, options);
   }
 
   public deleteStoredOrganisation(orgId: string): Promise<void> {

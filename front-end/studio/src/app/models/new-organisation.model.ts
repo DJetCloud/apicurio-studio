@@ -3,12 +3,7 @@ export class NewOrganisation{
     name: string;
     email: string;
     description: string;
-
-    constructor() {
-        this.id = ""
-        this.name = "";
-        this.email = "";
-        this.description = "";
-    }
+    createdBy: string;
+    createdOn: Date;
 
 }
