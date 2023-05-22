@@ -36,6 +36,10 @@ span.icon-bar {
   right: 0;
 }
 
+ .for-mobile {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
  .vnav {
   grid-column-start: m;
@@ -45,4 +49,10 @@ span.icon-bar {
   margin-top: 70px;
   z-index: 999;
  }
+
+ .for-mobile {
+  display: block;
+ }
+
+
 }
