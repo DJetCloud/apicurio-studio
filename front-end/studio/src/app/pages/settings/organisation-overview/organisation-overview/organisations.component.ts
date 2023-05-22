@@ -4,9 +4,9 @@ import {AbstractPageComponent} from '../../../../components/page-base.component'
 import {ActivatedRoute} from "@angular/router";
 import {Title} from "@angular/platform-browser";
 import {OrganisationModel} from '../../../../models/organisation.model';
-import {StoredOrganisation} from '../../../../models/stored-organisation.model';
 import {OrganisationEditorComponent} from './_components/organisation-editor.component';
 import {ConfirmDeleteDialogComponent} from '../../../../components/dialogs/confirm-delete.component';
+
 @Component({
   selector: 'app-organisations-overview',
   templateUrl: './organisations.component.html',
@@ -14,11 +14,10 @@ import {ConfirmDeleteDialogComponent} from '../../../../components/dialogs/confi
 })
 export class OrganisationsComponent extends AbstractPageComponent {
 
-  private organisations: OrganisationModel[];
+  public organisations: OrganisationModel[];
 
   @ViewChild("organisationCreator", { static: true }) organisationCreator: OrganisationEditorComponent;
   @ViewChild("confirmDeleteModal", { static: true }) confirmDeleteModal: ConfirmDeleteDialogComponent;
-
 
   constructor(private organisationService: OrganisationService, route: ActivatedRoute, titleService: Title) {
     super(route, titleService);
@@ -41,13 +40,13 @@ export class OrganisationsComponent extends AbstractPageComponent {
     this.organisationCreator.open();
   }
 
-  public editOrganisation(organistaion: StoredOrganisation) {
+  public editOrganisation(organistaion: OrganisationModel) {
     this.organisationCreator.open(organistaion);
   }
 
   public deleteOrganisation(orgId: string) {
     this.confirmDeleteModal.onDelete.subscribe(_ =>
-      this.organisationService.deleteStoredOrganisation(orgId).then(_ => {
+      this.organisationService.deleteOrganisation(orgId).then(_ => {
         this.loadAsyncPageData();
       }).catch(error => {
         this.error(error);

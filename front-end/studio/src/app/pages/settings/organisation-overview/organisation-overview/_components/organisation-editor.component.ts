@@ -1,15 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
-import { OrganisationService } from '../../../../../services/organisation.service';
-import { ConfigService } from '../../../../../services/config.service';
-import { OrganisationModel } from '../../../../../models/organisation.model';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { emailValidator } from '../../email-validator.directive';
-import {
-  AbstractControl,
-  FormBuilder,
-} from '@angular/forms';
-import { StoredOrganisation } from '../../../../../models/stored-organisation.model';
-import { UpdateOrganisation } from '../../../../../models/update-organisation-template.model';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {OrganisationService} from '../../../../../services/organisation.service';
+import {OrganisationModel} from '../../../../../models/organisation.model';
+import {FormGroup} from '@angular/forms';
+
 @Component({
   selector: 'organisation-editor',
   templateUrl: './organisation-editor.component.html',
@@ -21,22 +14,19 @@ export class OrganisationEditorComponent {
 
   @Output() onCreateOrganisation = new EventEmitter<OrganisationModel>();
 
-  model: OrganisationModel;
-  createOrganisation: boolean = false;
+  public model: OrganisationModel;
+  public createOrganisation: boolean = false;
   public _isOpen: boolean = false;
-
   public _mode: string = "create";
-  orgId: string;
-
+  public orgId: string;
 
   @Output() onSubmit: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private organisationService: OrganisationService, private config: ConfigService, private formBuilder: FormBuilder) {
+  constructor(private organisationService: OrganisationService) {
     this.createOrganisation = false;
-    this.model = {} as OrganisationModel;
   }
 
-  public initializeModelFromEntity(entity: UpdateOrganisation): void {
+  public initializeModelFromEntity(entity: OrganisationModel): void {
     this.model = {
       name: entity.name,
       email: entity.email,
@@ -46,11 +36,10 @@ export class OrganisationEditorComponent {
       id: entity.id
     };
     this._mode = "edit";
-    this.orgId = entity.orgId;
+    this.orgId = entity.id;
   }
-  
 
-  public open(entity?: UpdateOrganisation) {
+  public open(entity?: OrganisationModel) {
     if (entity) {
       this.initializeModelFromEntity(entity);
     } else {
@@ -78,7 +67,7 @@ export class OrganisationEditorComponent {
   public submit() {
     let action: Promise<any>;
     if (this._mode == "create") {
-      action = this.organisationService.createStoredOrganisation({
+      action = this.organisationService.createOrganisation({
         name: this.model.name,
         description: this.model.description,
         email: this.model.email,
@@ -86,8 +75,8 @@ export class OrganisationEditorComponent {
         createdBy: this.model.createdBy,
         createdOn: this.model.createdOn,
       });
-    } else {
-      action = this.organisationService.updateStoredOrganisation(this.orgId, {
+    } else{
+        action = this.organisationService.updateOrganisation(this.orgId, {
         name: this.model.name,
         description: this.model.description,
         email: this.model.email,
@@ -103,7 +92,6 @@ export class OrganisationEditorComponent {
       console.error(error);
       this.cancel();
     })
-
   }
 
   public submitText(): string {

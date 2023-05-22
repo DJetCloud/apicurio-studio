@@ -13,19 +13,16 @@
         <div class="col-xs-12 col-sm-3">
             <settings-nav tab="organisations"></settings-nav>
         </div>
-
         <div class="container-fluid container-organisations">
             <div *ngIf="isLoaded('organisations')">
                 <div class="col-xs-12 col-sm-8 organisations">
                     <div class="organisations-global-menu">
                         <h1>Manage Organisations</h1>
-                        <button class="btn btn-primary pull-right" (click)="createOrganisation()"><span>Create
-                                Organisation</span></button>
+                        <button class="btn btn-primary pull-right" (click)="createOrganisation()"><span>Create Organisation</span></button>
                     </div>
                     <table class="table organisations-striped organisations-bordered organisations-resume">
                         <thead>
                             <tr>
-                                
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th class="pre-actions">Creator</th>
@@ -33,12 +30,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let organisation of organisations">
-                               
+                            <tr *ngFor="let organisation of organisations">     
                                 <td>{{ organisation.name }}</td>
                                 <td>{{ organisation.description }}</td>
                                 <td>{{ organisation.createdOn | date }}</td>
-
                                 <td class="actions">
                                     <button class="icon-button fa-pull-right" title="Edit"
                                         (click)="editOrganisation(organisation)"><span

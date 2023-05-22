@@ -5,5 +5,4 @@ export class NewOrganisation{
     description: string;
     createdBy: string;
     createdOn: Date;
-
 }

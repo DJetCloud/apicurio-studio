@@ -11,7 +11,6 @@
                 <div class="panel panel-default col-sm-10">
                     <div class="panel-body">
                         <h1>{{ pageHeader() }}</h1>
-
                         <form name="form" id="organisation-form" class="form-horizontal container-fluid"
                             #organisationForm="ngForm" (ngSubmit)="organisationForm.form.valid && submit()">
                                 <div class="form-group">
@@ -27,7 +26,6 @@
                                             maxlength="20"
                                             [(ngModel)]="model.name"
                                             #name="ngModel">
-
                                         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="invalid-feedback">
 
                                             <div *ngIf="name.errors.required" class="invalid-feedback">
@@ -84,24 +82,9 @@
                                             class="form-control"
                                             placeholder="Enter a description for the organization..."
                                             [(ngModel)]="model.description"
-                                            #description="ngModel"
-                                            required
-                                            minlength="10"
-                                            required
-                                            maxlength="20"
-                                            [class.is-invalid]="description.invalid && (description.dirty || description.touched)"> 
+                                            #description="ngModel">
                                         </textarea>
-                                        <div *ngIf="description.invalid && (description.dirty || description.touched)"
-                                            class="invalid-feedback">
-                                            <div *ngIf="description.errors.minlength">
-                                                This field must have at least 10 character.
-                                            </div>
-                                            <div *ngIf="description.errors.maxlength">
-                                                This field must have at least 50 character.
-                                            </div>
-                                        </div>
                                     </div>
-
                                 </div>
                             <div class="col-sm-12 footer-panel">
                                 <div class="notice-of-required">The fields marked with <span class="required-icon">*</span>
