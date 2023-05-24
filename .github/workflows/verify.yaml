@@ -37,7 +37,7 @@ jobs:
           cache: maven
 
       - name: Build Project
-        run: mvn clean install -Pprod
+        run: mvn clean install -Pprod -Pmysql
 
       #- name: Run Integration Tests
       #  run: mvn install -pl :apicurio-studio-test-integration-arquillian -Pintegration
@@ -84,8 +84,8 @@ jobs:
          platforms: ${{env.PLATFORMS}}
          push: true
          tags: |
-           docker.io/djaiapp/apicurio-studio-api:latest-snapshot
-           quay.io/djai/apicurio-studio-api:latest-snapshot
+           docker.io/djaiapp/apicurio-studio-api-mysql:latest-snapshot
+           quay.io/djai/apicurio-studio-api-mysql:latest-snapshot
 
       - name: Build and Publish Studio WS
         if: github.event_name == 'push'
@@ -96,8 +96,8 @@ jobs:
          platforms: ${{env.PLATFORMS}}
          push: true
          tags: |
-           docker.io/djaiapp/apicurio-studio-ws:latest-snapshot
-           quay.io/djai/apicurio-studio-ws:latest-snapshot
+           docker.io/djaiapp/apicurio-studio-ws-mysql:latest-snapshot
+           quay.io/djai/apicurio-studio-ws-mysql:latest-snapshot
 
       - name: Build and Publish Studio UI
         if: github.event_name == 'push'
@@ -110,5 +110,3 @@ jobs:
          tags: |
            docker.io/djaiapp/apicurio-studio-ui:latest-snapshot
            quay.io/djai/apicurio-studio-ui:latest-snapshot
-
-      

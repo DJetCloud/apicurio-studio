@@ -30,7 +30,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.UUID;
 
-import io.apicurio.hub.core.beans.StoredApiTemplate;
+import io.apicurio.hub.core.beans.*;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.dbcp.BasicDataSource;
 import org.junit.After;
@@ -38,25 +38,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import io.apicurio.hub.core.beans.ApiContentType;
-import io.apicurio.hub.core.beans.ApiDesign;
-import io.apicurio.hub.core.beans.ApiDesignChange;
-import io.apicurio.hub.core.beans.ApiDesignCollaborator;
-import io.apicurio.hub.core.beans.ApiDesignCommand;
-import io.apicurio.hub.core.beans.ApiDesignContent;
-import io.apicurio.hub.core.beans.ApiDesignType;
-import io.apicurio.hub.core.beans.ApiMock;
-import io.apicurio.hub.core.beans.ApiPublication;
-import io.apicurio.hub.core.beans.CodegenProject;
-import io.apicurio.hub.core.beans.CodegenProjectType;
-import io.apicurio.hub.core.beans.Contributor;
-import io.apicurio.hub.core.beans.Invitation;
-import io.apicurio.hub.core.beans.LinkedAccount;
-import io.apicurio.hub.core.beans.LinkedAccountType;
-import io.apicurio.hub.core.beans.SharingConfiguration;
-import io.apicurio.hub.core.beans.SharingLevel;
-import io.apicurio.hub.core.beans.ValidationProfile;
-import io.apicurio.hub.core.beans.ValidationSeverity;
 import io.apicurio.hub.core.config.HubConfiguration;
 import io.apicurio.hub.core.exceptions.AlreadyExistsException;
 import io.apicurio.hub.core.exceptions.NotFoundException;
@@ -1694,6 +1675,165 @@ public class JdbcStorageTest {
         try {
             // Fail on missing template
             this.storage.deleteApiTemplate(apiTemplate.getTemplateId());
+            Assert.fail("Expected a NotFoundException");
+        } catch (NotFoundException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testCreateOrganization() throws Exception {
+        Organization org = new Organization();
+        org.setName("Test");
+        org.setDescription("Set description");
+        org.setEmail("test@test.email");
+        org.setCreatedBy("user");
+        org.setCreatedOn(new Date());
+
+        storage.createOrganization("user", org);
+        try {
+            // Fail on conflict
+            this.storage.createOrganization("user", org);
+            Assert.fail();
+        } catch (AlreadyExistsException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testGetOrganization() throws Exception {
+        String userName = "user";
+        Organization org = new Organization();
+        org.setName("test_name");
+        org.setDescription("test description");
+        org.setEmail("test@test.email");
+        org.setCreatedBy(userName);
+        org.setCreatedOn(new Date());
+
+        String orgId = storage.createOrganization(userName, org);
+
+        Organization createdOrg = storage.getOrganization(orgId, userName);
+
+        Assert.assertNotNull(createdOrg);
+        Assert.assertEquals(orgId, createdOrg.getId());
+        Assert.assertEquals(org.getName(), createdOrg.getName());
+        Assert.assertEquals(org.getDescription(), createdOrg.getDescription());
+        Assert.assertEquals(org.getEmail(), createdOrg.getEmail());
+        Assert.assertEquals(org.getCreatedBy(), createdOrg.getCreatedBy());
+        Assert.assertEquals(org.getCreatedOn(), createdOrg.getCreatedOn());
+    }
+
+    @Test
+    public void testGetOrganizationNotFound() throws Exception {
+        try {
+            storage.getOrganization("10", "user");
+            Assert.fail("Expected a NotFoundException");
+        } catch (NotFoundException e) {
+            // expected
+        }
+    }
+
+    @Test
+    public void testGetOrganizations() throws Exception {
+        String userName = "user";
+        Organization orgA = new Organization();
+        orgA.setName("testNameA");
+        orgA.setDescription("test description a");
+        orgA.setEmail("test@org_a.com");
+        orgA.setCreatedOn(new Date());
+        orgA.setCreatedBy(userName);
+
+        Organization orgC = new Organization();
+        orgC.setName("testNameC");
+        orgC.setDescription("test description c");
+        orgC.setEmail("test@org_c.com");
+        orgC.setCreatedOn(new Date());
+        orgC.setCreatedBy(userName);
+
+        Organization orgB = new Organization();
+        orgB.setName("testNameB");
+        orgB.setDescription("test description b");
+        orgB.setEmail("test@org_b.com");
+        orgB.setCreatedOn(new Date());
+        orgB.setCreatedBy(userName);
+
+        storage.createOrganization(userName, orgA);
+        storage.createOrganization(userName, orgC);
+        storage.createOrganization(userName, orgB);
+
+        List<Organization> storedOrgs = storage.listOrganizations(userName);
+
+        Assert.assertNotNull(storedOrgs);
+        // Should be ordered by name: testNameA, testNameB, testNameC
+        Assert.assertEquals(3, storedOrgs.size());
+        Assert.assertEquals(orgA.getName(), storedOrgs.get(0).getName());
+        Assert.assertEquals(orgB.getName(), storedOrgs.get(1).getName());
+        Assert.assertEquals(orgC.getName(), storedOrgs.get(2).getName());
+    }
+
+    @Test
+    public void testUpdateOrganization() throws Exception {
+        String userName = "user";
+        Organization org = new Organization();
+        org.setName("TestName");
+        org.setDescription("Set description");
+        org.setEmail("test@test.email");
+        org.setCreatedBy(userName);
+        org.setCreatedOn(new Date());
+
+        String orgId = storage.createOrganization(userName, org);
+        org.setId(orgId);
+        org.setDescription("Set Description 2");
+        org.setEmail("test2@test.email");
+        storage.updateOrganization(org);
+
+        Organization updatedOrg = storage.getOrganization(orgId, userName);
+        Assert.assertNotNull(updatedOrg);
+        Assert.assertEquals(org.getName(), updatedOrg.getName());
+        Assert.assertEquals(org.getDescription(), updatedOrg.getDescription());
+        Assert.assertEquals(org.getEmail(), updatedOrg.getEmail());
+    }
+
+    @Test
+    public void testUpdateOrganizationFail() throws StorageException {
+        String userName = "user";
+
+        Organization org = new Organization();
+        org.setId("10");
+        org.setName("TestName");
+        org.setDescription("Set description");
+        org.setEmail("test@test.email");
+        org.setCreatedBy(userName);
+        org.setCreatedOn(new Date());
+
+        try {
+            storage.updateOrganization(org);
+            Assert.fail("Expected a NotFoundException");
+        } catch (NotFoundException e) {
+            //expected
+        }
+    }
+
+    @Test
+    public void testDeleteOrganization() throws Exception {
+        String userName = "user";
+
+        Organization org = new Organization();
+        org.setName("TestName");
+        org.setDescription("Set description");
+        org.setEmail("test@test.email");
+        org.setCreatedBy(userName);
+        org.setCreatedOn(new Date());
+
+        String orgId = storage.createOrganization(userName, org);
+        storage.deleteOrganization(orgId, userName);
+    }
+
+    @Test
+    public void testDeleteOrganizationNotFound() throws Exception {
+        try {
+            // Fail on missing template
+            this.storage.deleteApiTemplate("11");
             Assert.fail("Expected a NotFoundException");
         } catch (NotFoundException e) {
             // expected
