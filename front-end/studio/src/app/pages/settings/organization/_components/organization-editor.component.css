@@ -1,4 +1,4 @@
-.organisation-editor {
+.organization-editor {
     position: absolute;
     left: 0;
     right: 0;
@@ -36,10 +36,10 @@
 
   }
 
-  .organisations-breadcumb {
+  .organizations-breadcumb {
     width: 100%;
   }
 
- div#api-breadcrumb-bar .organisations-breadcumb{
+ div#api-breadcrumb-bar .organizations-breadcumb{
     margin-left: -25px;
   }

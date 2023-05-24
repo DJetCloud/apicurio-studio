@@ -1,32 +1,29 @@
 import {Component, EventEmitter, Output} from '@angular/core';
-import {OrganisationService} from '../../../../../services/organisation.service';
-import {OrganisationModel} from '../../../../../models/organisation.model';
-import {FormGroup} from '@angular/forms';
+import {OrganizationService} from '../../../../services/organization.service';
+import {OrganizationModel} from '../../../../models/organization.model';
 
 @Component({
-  selector: 'organisation-editor',
-  templateUrl: './organisation-editor.component.html',
-  styleUrls: ['./organisation-editor.component.css']
+  selector: 'organization-editor',
+  templateUrl: './organization-editor.component.html',
+  styleUrls: ['./organization-editor.component.css']
 })
-export class OrganisationEditorComponent {
-  reactiveForm: FormGroup;
-  submitted = false;
+export class OrganizationEditorComponent {
 
-  @Output() onCreateOrganisation = new EventEmitter<OrganisationModel>();
+  @Output() onCreateOrganization = new EventEmitter<OrganizationModel>();
 
-  public model: OrganisationModel;
-  public createOrganisation: boolean = false;
+  public model: OrganizationModel;
+  public createOrganization: boolean = false;
   public _isOpen: boolean = false;
   public _mode: string = "create";
   public orgId: string;
 
   @Output() onSubmit: EventEmitter<void> = new EventEmitter<void>();
 
-  constructor(private organisationService: OrganisationService) {
-    this.createOrganisation = false;
+  constructor(private organizationService: OrganizationService) {
+    this.createOrganization = false;
   }
 
-  public initializeModelFromEntity(entity: OrganisationModel): void {
+  public initializeModelFromEntity(entity: OrganizationModel): void {
     this.model = {
       name: entity.name,
       email: entity.email,
@@ -39,7 +36,7 @@ export class OrganisationEditorComponent {
     this.orgId = entity.id;
   }
 
-  public open(entity?: OrganisationModel) {
+  public open(entity?: OrganizationModel) {
     if (entity) {
       this.initializeModelFromEntity(entity);
     } else {
@@ -67,7 +64,7 @@ export class OrganisationEditorComponent {
   public submit() {
     let action: Promise<any>;
     if (this._mode == "create") {
-      action = this.organisationService.createOrganisation({
+      action = this.organizationService.createOrganization({
         name: this.model.name,
         description: this.model.description,
         email: this.model.email,
@@ -75,8 +72,8 @@ export class OrganisationEditorComponent {
         createdBy: this.model.createdBy,
         createdOn: this.model.createdOn,
       });
-    } else{
-        action = this.organisationService.updateOrganisation(this.orgId, {
+    } else {
+      action = this.organizationService.updateOrganization(this.orgId, {
         name: this.model.name,
         description: this.model.description,
         email: this.model.email,
@@ -96,14 +93,14 @@ export class OrganisationEditorComponent {
 
   public submitText(): string {
     return this._mode == "create"
-      ? "Create Organisation"
+      ? "Create Organization"
       : "Save";
   }
 
   public pageHeader(): string {
     return this._mode == "create"
-      ? "Create Organisation"
-      : "Edit the Organisation";
+      ? "Create Organization"
+      : "Edit the Organization";
   }
 
   public isOpen(): boolean {

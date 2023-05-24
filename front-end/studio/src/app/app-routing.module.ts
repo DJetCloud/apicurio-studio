@@ -39,8 +39,8 @@ import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessio
 import {ApiTextEditorPageComponent, ApiTextEditorPageGuard} from "./pages/apis/{apiId}/editor/api-teditor.page";
 import {TemplatePublicationPageComponent} from "./pages/apis/{apiId}/template/template-publication.page";
 import {TemplatesPageComponent} from "./pages/templates/templates.page";
-import { OrganisationsComponent } from './pages/settings/organisation-overview/organisation-overview/organisations.component';
-import { OrganisationEditorComponent } from './pages/settings/organisation-overview/organisation-overview/_components/organisation-editor.component';
+import {OrganizationComponent} from './pages/settings/organization/organization.component';
+import {OrganizationEditorComponent} from './pages/settings/organization/_components/organization-editor.component';
 const routes: Routes = [
     {
         path: "",
@@ -88,13 +88,13 @@ const routes: Routes = [
         canActivate: [AuthenticationCanActivateGuard]
     },
     {
-        path: "settings/organisations",
-        component: OrganisationsComponent,
+        path: "settings/organizations",
+        component: OrganizationComponent,
         canActivate: [AuthenticationCanActivateGuard]
     },
     {
-        path: "settings/organisations/:id",
-        component: OrganisationEditorComponent,
+        path: "settings/organizations/:id",
+        component: OrganizationEditorComponent,
         canActivate: [AuthenticationCanActivateGuard]
     },
     {

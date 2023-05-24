@@ -85,10 +85,10 @@ import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
 import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
-import { ReactiveFormsModule } from '@angular/forms';
-
-import {OrganisationsComponent} from "./pages/settings/organisation-overview/organisation-overview/organisations.component";
-import {OrganisationEditorComponent} from "./pages/settings/organisation-overview/organisation-overview/_components/organisation-editor.component";
+import {ReactiveFormsModule} from '@angular/forms';
+import {OrganizationComponent} from "./pages/settings/organization/organization.component";
+import {OrganizationEditorComponent} from "./pages/settings/organization/_components/organization-editor.component";
+import {OrganizationService} from "./services/organization.service";
 @NgModule({
     imports: [
         CommonModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
@@ -106,11 +106,11 @@ import {OrganisationEditorComponent} from "./pages/settings/organisation-overvie
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
         DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent,
-        LoginSessionsComponent, DateAsAgoPipe, OrganisationsComponent, OrganisationEditorComponent
+        LoginSessionsComponent, DateAsAgoPipe, OrganizationComponent, OrganizationEditorComponent
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,
-        AuthenticationCanActivateGuard, ApiEditorPageGuard, CurrentUserService, TemplateService
+        AuthenticationCanActivateGuard, ApiEditorPageGuard, CurrentUserService, TemplateService, OrganizationService
     ],
     bootstrap: [AppComponent],
     exports: [

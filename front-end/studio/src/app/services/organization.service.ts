@@ -1,46 +1,46 @@
 import {Injectable} from '@angular/core';
-import {OrganisationModel} from '../models/organisation.model';
+import {OrganizationModel} from '../models/organization.model';
 import {AbstractHubService} from "./hub";
 import {IAuthenticationService} from "./auth.service";
 import {HttpClient} from '@angular/common/http';
 import {ConfigService} from "./config.service";
-import {NewOrganisation} from '../models/new-organisation.model';
+import {NewOrganization} from '../models/new-organization.model';
 @Injectable({
   providedIn: 'root'
 })
-export class OrganisationService extends AbstractHubService {
+export class OrganizationService extends AbstractHubService {
 
   constructor(http: HttpClient, authService: IAuthenticationService, config: ConfigService) {
     super(http, authService, config);
   }
 
-  public getOverviewInformation(): Promise<OrganisationModel[]> {
+  public getOverviewInformation(): Promise<OrganizationModel[]> {
 
     let url: string = this.endpoint('/orgs');
     let options: any = this.options({ "Accept": "application/json" });
 
-    return this.httpGet<OrganisationModel[]>(url, options);
+    return this.httpGet<OrganizationModel[]>(url, options);
   }
 
-  public createOrganisation(organisation: OrganisationModel): Promise<OrganisationModel> {
+  public createOrganization(organization: OrganizationModel): Promise<OrganizationModel> {
 
     let url: string = this.endpoint('/orgs');;
     let options: any = this.options({ "Accept": "application/json" });
 
-    return this.httpPostWithReturn<NewOrganisation, OrganisationModel>(url, organisation, options);
+    return this.httpPostWithReturn<NewOrganization, OrganizationModel>(url, organization, options);
   }
 
-  public updateOrganisation(orgId: string, organisationTemplate: OrganisationModel): Promise<void> {
+  public updateOrganization(orgId: string, organizationTemplate: OrganizationModel): Promise<void> {
 
-    let organisationTemplateUrl: string = this.endpoint("/orgs/:orgId", {
+    let organizationTemplateUrl: string = this.endpoint("/orgs/:orgId", {
       orgId: orgId
     });
     let options: any = this.options({ "Accept": "application/json" });
 
-    return this.httpPut<OrganisationModel>(organisationTemplateUrl, organisationTemplate, options);
+    return this.httpPut<OrganizationModel>(organizationTemplateUrl, organizationTemplate, options);
   }
 
-  public deleteOrganisation(orgId: string): Promise<void> {
+  public deleteOrganization(orgId: string): Promise<void> {
 
     let url: string = this.endpoint("/orgs/:orgId", {
       orgId: orgId

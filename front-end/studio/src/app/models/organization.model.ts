@@ -1,8 +1,8 @@
-export class NewOrganisation{
+export class OrganizationModel {
     id: string;
     name: string;
-    email: string;
     description: string;
     createdBy: string;
     createdOn: Date;
+    email:string;
 }

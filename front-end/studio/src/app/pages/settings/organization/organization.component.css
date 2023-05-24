@@ -1,69 +1,69 @@
-.organisations {
+.organizations {
     border: 1px solid #ddd;
     background-color: white;
     padding-bottom: 25px;
 }
 
-.container-organisations .template-form {
+.container-organizations .template-form {
     margin-top: 20px;
     margin-left: 10px;
   }
   
-  .container-organisations .template-form h1 {
+  .container-organizations .template-form h1 {
     margin-top: 10px;
     margin-bottom: 25px;
   }
   
-  .container-organisations .template-form .control-label {
+  .container-organizations .template-form .control-label {
     padding-right: 0;
   }
   
-  .container-organisations .template-form textarea {
+  .container-organizations .template-form textarea {
     resize: vertical;
   }
   
-  .container-organisations .templates-global-menu {
+  .container-organizations .templates-global-menu {
     margin-top: 10px;
     margin-bottom: 30px;
   }
   
-  .container-organisations .templates-global-menu > * {
+  .container-organizations .templates-global-menu > * {
      display: inline;
    }
 
-   .organisations-global-menu {
+   .organizations-global-menu {
     display: flex;
     justify-content: space-between;
     align-items: center
    }
 
-   .organisations-global-menu button {
+   .organizations-global-menu button {
     width: 130px;
     height: 25px;
    }
 
-   .organisations-global-menu button span {
+   .organizations-global-menu button span {
   
     font-size: 12px;
    }
   
-  .container-organisations .notice-of-required {
+  .container-organizations .notice-of-required {
     margin-top: 30px;
   }
   
-  .container-organisations .template-resume .actions > button {
+  .container-organizations .template-resume .actions > button {
     background-color: transparent;
     color: #776;
     border-width: 0;
   }
   
-  .container-organisations table td.pre-actions,
-  .container-organisations table th.pre-actions {
+  .container-organizations table td.pre-actions,
+  .container-organizations table th.pre-actions {
     border-right-width: 0px;
   }
   
-  .container-organisations table td.actions,
-  .container-organisations table th.actions {
+  .container-organizations table td.actions,
+  .container-organizations table th.actions {
     border-left-width: 0px;
     padding-right: 0px;
   }
