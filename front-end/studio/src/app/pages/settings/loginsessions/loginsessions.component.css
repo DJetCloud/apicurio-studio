@@ -2,14 +2,72 @@
     border: 1px solid #ddd;
     background-color: white;
     padding-bottom: 25px;
-    width: 55%;
-}
-.login-session {
-    background: #F5F5F5;
-    border-bottom: 1px solid #F5F5F5;
 }
 
-.header {
+.title {
+    background: #F5F5F5;
+    border-bottom: 1px solid #F5F5F5;
+    height: 32.5px;
+    padding: 1px 1px 1px 1px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.title > th {
+    width: 25%;
+    display: flex;
+}
+
+td.action {
+    display: flex;
+    justify-content: center;
+}
+
+.current-session {
+    font-weight: 400;
+    color: #151515;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 2px 5px 2px 5px;
+    font-size: x-small;
+}
+
+table {
+    width: 100%;
+}
+
+.title th {
+    padding: 5px; 
+}
+
+.login-session-info {
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgba(245, 245, 245, 1);
+}
+
+.login-session-info > td {
+    width: 25%;
+    display: flex;
+}
+
+.icon-button {
+    background-color: rgba(163, 0, 0, 1);
+    border: 1px solid rgba(139, 0, 0, 1);
+    width: 65px;
+    height: 25px;
+}
+
+.icon-button span {
+    color: white;
+}
+
+.header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -18,15 +76,10 @@
     border-bottom: 1px solid white;
 }
 
-.name-and-description {
-    display: flex;
-    flex-direction: column;
-    width: 40%;
-}
-
 .login-sessions-title {
     line-height: 21px;
-    color: #000000;
+    color:rgba(0, 0, 0, 1);
+    font-weight: 400;
 }
 
 .main-title {
@@ -34,9 +87,9 @@
     font-size: 24px;
 }
 
-.description {
-   font-weight: bold;
-   display: flex;
-   flex-direction: row;
-   align-items: center
-}
+@media screen and (max-width: 768px) {
+    .login-session-info > td {
+        width: 100%;
+        display: flex;
+    }
+  }
