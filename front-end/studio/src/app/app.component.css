@@ -36,23 +36,25 @@ span.icon-bar {
   right: 0;
 }
 
- .for-mobile {
+.for-mobile {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
- .vnav {
-  grid-column-start: m;
-  grid-column-end: m;
-  width: 130px;
-  overflow: hidden;
-  margin-top: 70px;
-  z-index: 999;
- }
+  .vnav {
+    grid-column-start: m;
+    grid-column-end: m;
+    width: 130px;
+    overflow: hidden;
+    margin-top: 70px;
+    z-index: 999;
+  }
 
- .for-mobile {
-  display: block;
- }
+  .for-mobile {
+    display: block;
+  }
 
-
+  .app-body {
+    height: 1000px;
+  }
 }
