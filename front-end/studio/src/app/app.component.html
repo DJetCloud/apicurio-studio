@@ -27,35 +27,36 @@
                     <i class="fas fa-cog" aria-hidden="true"></i></button>
             </div>
             <div class="pf-c-page__header-tools-group">
-                <div class="pf-c-dropdown">
-                    <button class="pf-c-dropdown__toggle pf-m-mobile  pf-m-plain" id="dropdown-kebab-right-aligned-1-button"
-                            aria-expanded="false" aria-label="Actions">
+                <div class="pf-c-dropdown for-mobile">
+                    <button class="pf-c-dropdown__toggle pf-m-mobile  pf-m-plain"
+                        id="dropdown-kebab-right-aligned-1-button" aria-expanded="false" aria-label="Actions"
+                        (click)="collapse = !collapse">
                         <i class="fas fa-ellipsis-v" aria-hidden="true"></i></button>
-                    <ul class="pf-c-dropdown__menu pf-m-align-right" aria-labelledby="dropdown-kebab-right-aligned-1-button" hidden="">
-                        <li><a class="pf-c-dropdown__menu-item" href="#">Link</a></li>
+                    <ul class="pf-c-dropdown__menu pf-m-align-right" aria-labelledby="helpDropdownButton"
+                        *ngIf="collapse">
                         <li>
-                            <button class="pf-c-dropdown__menu-item">Action</button>
-                        </li>
-                        <li><a class="pf-c-dropdown__menu-item pf-m-disabled" aria-disabled="true" tabindex="-1" href="#">Disabled
-                            Link</a></li>
-                        <li>
-                            <button class="pf-c-dropdown__menu-item" disabled="">Disabled Action</button>
+                            <a class="pf-c-dropdown__menu-item" data-toggle="modal" data-target="#about-modal"
+                                rel="nofollow" role="link" target="_blank" (click)="collapse = false">About
+                            </a>
                         </li>
                         <li class="pf-c-dropdown__separator" role="separator"></li>
-                        <li><a class="pf-c-dropdown__menu-item" href="#">Separated Link</a></li>
+                        <li class="">
+                            <a (click)="logout()" class="pf-c-dropdown__menu-item" role="link">Logout </a>
+                        </li>
                     </ul>
                 </div>
                 <div class="pf-m-user pf-screen-reader">
                     <div class="pf-c-dropdown">
                         <button class="pf-c-dropdown__toggle pf-m-plain" id="page-layout-default-nav-dropdown-button"
-                                aria-expanded="false" (click)="helpExpanded = !helpExpanded">
+                            aria-expanded="false" (click)="helpExpanded = !helpExpanded">
                             <span class="pf-c-dropdown__toggle-text">{{ user().name }}</span>
                             <i class="fas fa-caret-down pf-c-dropdown__toggle-icon" aria-hidden="true"></i>
                         </button>
-                        <ul class="pf-c-dropdown__menu pf-m-align-right" aria-labelledby="helpDropdownButton" *ngIf="helpExpanded">
+                        <ul class="pf-c-dropdown__menu pf-m-align-right" aria-labelledby="helpDropdownButton"
+                            *ngIf="helpExpanded">
                             <li>
-                                <a class="pf-c-dropdown__menu-item" data-toggle="modal" data-target="#about-modal" rel="nofollow"
-                                   role="link" target="_blank" (click)="helpExpanded = false">About
+                                <a class="pf-c-dropdown__menu-item" data-toggle="modal" data-target="#about-modal"
+                                    rel="nofollow" role="link" target="_blank" (click)="helpExpanded = false">About
                                 </a>
                             </li>
                             <li class="pf-c-dropdown__separator" role="separator"></li>
@@ -64,12 +65,13 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
             </div>
             <img class="pf-c-avatar" src="assets/pf/img_avatar.svg" alt="Avatar Image">
 
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse-pf-site" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                data-target=".navbar-collapse-pf-site" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -79,8 +81,8 @@
         </div>
     </header>
 
-        <vertical-nav *ngIf="authService.isAuthenticated()"></vertical-nav>
-          <div id="{{ routerOutletWrapperId }}" class="{{ routerOutletWrapperClass }}">
+    <vertical-nav *ngIf="authService.isAuthenticated()"></vertical-nav>
+    <div id="{{ routerOutletWrapperId }}" class="{{ routerOutletWrapperClass }}">
         <router-outlet></router-outlet>
     </div>
 
@@ -113,7 +115,8 @@
                         </tr>
                         <tr>
                             <td><strong>Project URL</strong><span>&nbsp;</span></td>
-                            <td><a href="{{ projectUrl }}" target="_blank">{{ projectUrl }} <span class="fa fa-external-link"></span></a></td>
+                            <td><a href="{{ projectUrl }}" target="_blank">{{ projectUrl }} <span
+                                        class="fa fa-external-link"></span></a></td>
                         </tr>
                     </table>
                 </div>

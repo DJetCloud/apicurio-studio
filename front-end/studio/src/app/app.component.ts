@@ -34,6 +34,7 @@ export class AppComponent {
     projectUrl: string = "https://github.com/djai-app";
 
     helpExpanded: boolean = false;
+    collapse: boolean = false;
 
     /**
      * @param authService
@@ -71,6 +72,7 @@ export class AppComponent {
 
     public logout(): void {
         this.helpExpanded = false;
+        this.collapse = false;
         this.authService.logout();
     }
 
