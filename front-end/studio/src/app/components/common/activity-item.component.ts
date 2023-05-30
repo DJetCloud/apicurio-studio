@@ -18,7 +18,7 @@
 import {Component, Input} from "@angular/core";
 import {ApiDesignChange} from "../../models/api-design-change.model";
 import {ApiTemplatePublication} from "../../models/api-template-publication.model";
-import { MockReference } from "../../models/mock-api.model";
+import {MockReference} from "../../models/mock-api.model";
 import {ICommand, MarshallCompat} from "@apicurio/data-models";
 import {PublishApi} from "../../models/publish-api.model";
 import * as moment from "moment";

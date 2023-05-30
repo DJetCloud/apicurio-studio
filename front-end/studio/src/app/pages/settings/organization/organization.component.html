@@ -1,0 +1,65 @@
+<div id="api-breadcrumb-bar">
+    <breadcrumbs>
+        <li breadcrumb label="Settings" [route]="[ '/settings' ]"></li>
+        <li breadcrumb label="Organizations" class="active"></li>
+    </breadcrumbs>
+</div>
+
+<page-error [error]="pageError" *ngIf="pageError"></page-error>
+
+<div class="container-fluid" *ngIf="!pageError">
+    <div class="row" style="min-height: 35px"></div>
+    <div class="row row-cards-pf">
+        <div class="col-xs-12 col-sm-3">
+            <settings-nav tab="organizations"></settings-nav>
+        </div>
+        <div class="container-fluid container-organizations">
+            <div *ngIf="isLoaded('organizations')">
+                <div class="col-xs-12 col-sm-8 organizations">
+                    <div class="organizations-global-menu">
+                        <h1>Manage Organizations</h1>
+                        <button class="btn btn-primary pull-right" (click)="createOrganization()"><span>Create
+                                Organization</span></button>
+                    </div>
+                    <table class="table organizations-striped organizations-bordered organizations-resume">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th class="pre-actions">Created</th>
+                                <th class="actions"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let organization of organizations">
+                                <td>{{ organization.name }}</td>
+                                <td>{{ organization.description }}</td>
+                                <td>{{ organization.createdOn | date }}</td>
+                                <td class="actions">
+                                    <button class="icon-button fa-pull-right" title="Edit"
+                                        (click)="editOrganization(organization)"><span
+                                            class="fa fa-edit"></span></button>
+                                    <button class="icon-button fa-pull-right" title="Delete"
+                                        (click)="deleteOrganization(organization.id)"><span
+                                            class="fa fa-trash"></span></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<organization-editor #organizationCreator (onSubmit)="loadAsyncPageData()"></organization-editor>
+
+<confirm-delete-dialog #confirmDeleteModal>
+    <p>Do you really want to delete this organization?</p>
+    <div class="alert alert-danger">
+        <span class="pficon pficon-error-circle-o"></span>
+        <strong>NOTE:</strong>
+        <span>This will <strong>permanently</strong> remove the organization from the Organization creation page. This
+            operation cannot be undone.</span>
+    </div>
+</confirm-delete-dialog>

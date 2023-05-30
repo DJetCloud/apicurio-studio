@@ -26,7 +26,7 @@ import {ApicurioRole} from "../models/apicurio-role.enum";
  * Models the sub-menus off the main left-hand vertical nav.
  */
 export enum VerticalNavSubMenuType {
-    None, Dashboard, APIs, Settings, Templates, LoginSession, Plus
+    None, Dashboard, APIs, Settings, Templates, LoginSession, Plus, Organisations
 }
 
 

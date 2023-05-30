@@ -16,6 +16,7 @@
  */
 
 import {ClipboardModule} from "ngx-clipboard";
+import { CommonModule } from '@angular/common';  
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
@@ -84,11 +85,14 @@ import {TemplatesPageComponent} from "./pages/templates/templates.page";
 import {TemplateEditorComponent} from "./pages/templates/_components/template-editor.component";
 import {LoginSessionsComponent} from './pages/settings/loginsessions/loginsessions.component';
 import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
-
+import {ReactiveFormsModule} from '@angular/forms';
+import {OrganizationComponent} from "./pages/settings/organization/organization.component";
+import {OrganizationEditorComponent} from "./pages/settings/organization/_components/organization-editor.component";
+import {OrganizationService} from "./services/organization.service";
 @NgModule({
     imports: [
-        BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
-        ApicurioCommonComponentsModule, ApicurioEditorModule, ClipboardModule
+        CommonModule, BrowserAnimationsModule, BrowserModule, FormsModule, HttpClientModule, AppRoutingModule, ModalModule.forRoot(), BsDropdownModule.forRoot(),
+        ApicurioCommonComponentsModule, ApicurioEditorModule, ClipboardModule, ReactiveFormsModule
     ],
     declarations: [
         AppComponent, DashboardPageComponent, BreadcrumbsComponent, BreadcrumbComponent, PageErrorComponent,
@@ -101,11 +105,12 @@ import {DateAsAgoPipe} from './pages/settings/pipes/date-as-ago.pipe';
         GenerateProjectWizardComponent, ActivityItemComponent, EditorDisconnectedDialogComponent, MockPageComponent,
         DefaultPageComponent, ConfigureValidationComponent, ProfileEditorComponent, TagListComponent,
         SharingDialogComponent, ApiTextEditorPageComponent, DownloadDialogComponent, ImportComponentsWizard,
-        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent, LoginSessionsComponent, DateAsAgoPipe
+        DataTableComponent, LoadingComponent, TemplatePublicationPageComponent, TemplatesPageComponent, TemplateEditorComponent,
+        LoginSessionsComponent, DateAsAgoPipe, OrganizationComponent, OrganizationEditorComponent
     ],
     providers: [
         ApisService, AuthenticationServiceProvider, ConfigService, LinkedAccountsService, ValidationService,
-        AuthenticationCanActivateGuard, ApiEditorPageGuard, CurrentUserService, TemplateService
+        AuthenticationCanActivateGuard, ApiEditorPageGuard, CurrentUserService, TemplateService, OrganizationService
     ],
     bootstrap: [AppComponent],
     exports: [
