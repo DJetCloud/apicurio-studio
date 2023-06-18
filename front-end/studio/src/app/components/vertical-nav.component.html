@@ -13,7 +13,6 @@
             </div>
 
             <div class="api-nav-submenu" *ngIf="currentSubMenu === subMenuTypes.Plus">
-                <h3> Create </h3>
                 <div class="action" [class.active]="isRouteActive('/apis/create')">
                     <a routerLink="/apis/create"><span class="pficon pficon-add-circle-o"></span>
                         <span>Create New API</span></a>
@@ -66,9 +65,6 @@
 
             <div class="api-nav-submenu" *ngIf="currentSubMenu === subMenuTypes.Settings">
 
-                <div class="action">
-                    <h3>Settings</h3>
-                </div>
                 <div class="action" [class.active]="isRouteActive('/settings/profile')">
                     <a routerLink="/settings/profile"><span class="fa fa-fw fa-user"></span><span>User
                             Profile</span></a>
