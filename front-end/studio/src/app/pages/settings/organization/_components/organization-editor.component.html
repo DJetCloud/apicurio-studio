@@ -37,7 +37,7 @@
                             <label class="col-sm-2 control-label required" for="email">Email</label>
                             <div class="col-sm-10">
                                 <input name="email" type="text" id="email" placeholder="your-name@provider.com"
-                                    minlength="10" maxlength="30" required email class="form-control form-control-sm"
+                                    required email class="form-control form-control-sm"
                                     [(ngModel)]="model.email" #email="ngModel"
                                     [class.is-invalid]="email.invalid && (email.dirty || email.touched)">
 
@@ -45,14 +45,8 @@
                                     <div *ngIf="email.errors.required">
                                         This field is required.
                                     </div>
-                                    <div *ngIf="email.errors.minlength">
-                                        This field must have at least 1 character.
-                                    </div>
-                                    <div *ngIf="email.errors.maxlength">
-                                        This field must have at most 250 characters.
-                                    </div>
                                     <div *ngIf="email.errors.email">
-                                        Email must be a valid email address
+                                        Email must be a valid format
                                     </div>
                                 </div>
                             </div>
