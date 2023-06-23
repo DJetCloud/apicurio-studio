@@ -9,16 +9,19 @@
             (click)="toggleSubMenu(subMenuTypes.Plus)">
             <div class="plus-create">
                 <span id="plus-create-button" class="fa fa-fw fa-plus"></span>
-                <span class="create">Create</span>
+                <div class="create">Create</div>
             </div>
 
             <div class="api-nav-submenu" *ngIf="currentSubMenu === subMenuTypes.Plus">
+                <h3 class="title-nav-api">Create</h3>
                 <div class="action" [class.active]="isRouteActive('/apis/create')">
                     <a routerLink="/apis/create"><span class="pficon pficon-add-circle-o"></span>
-                        <span>Create New API</span></a>
+                        <span>Create New API</span>
+                    </a>
                 </div>
                 <div class="action" [class.active]="isRouteActive('/apis/import')">
-                    <a routerLink="/apis/import"><span class="pficon pficon-import"></span><span>Import API</span></a>
+                    <a routerLink="/apis/import"><span class="pficon pficon-import"></span>
+                        <span>Import API</span></a>
                 </div>
             </div>
 
@@ -28,8 +31,8 @@
             [class.selected]="currentSubMenu === subMenuTypes.Dashboard" (click)="goToDashboard()">
 
             <div class="submenu-and-title">
-                <span class="fa fa-fw fa-dashboard"></span>
-                <span>Dashboard</span>
+                <span class="fa fa-fw fa-dashboard" style="font-size:22px"></span>
+                <div>Dashboard</div>
             </div>
 
         </div>
@@ -39,8 +42,8 @@
             (click)="goToTemplates()">
 
             <div class="submenu-and-title">
-                <span class="fa fa-fw fa-puzzle-piece"></span>
-                <span>Templates</span>
+                <span class="fa fa-fw fa-puzzle-piece" style="font-size:22px"></span>
+                <div>Templates</div>
             </div>
         </div>
 
@@ -48,8 +51,8 @@
             [class.selected]="currentSubMenu === subMenuTypes.APIs" (click)="goToApisList()">
 
             <div class="submenu-and-title">
-                <span class="fa fa-fw fa-bolt"></span>
-                <span>APIs</span>
+                <span class="fa fa-fw fa-bolt" style="font-size:22px"></span>
+                <div>APIs</div>
             </div>
 
         </div>
@@ -59,11 +62,12 @@
             [class.selected]="currentSubMenu === subMenuTypes.Settings" (click)="toggleSubMenu(subMenuTypes.Settings)">
 
             <div class="submenu-and-title">
-                <span class="fa fa-fw fa-cogs"></span>
-                <span>Settings</span>
+                <span class="fa fa-fw fa-cogs" style="font-size:22px"></span>
+                <div>Settings</div>
             </div>
 
             <div class="api-nav-submenu" *ngIf="currentSubMenu === subMenuTypes.Settings">
+                <h3 class="title-nav-api">Settings</h3>
 
                 <div class="action" [class.active]="isRouteActive('/settings/profile')">
                     <a routerLink="/settings/profile"><span class="fa fa-fw fa-user"></span><span>User
