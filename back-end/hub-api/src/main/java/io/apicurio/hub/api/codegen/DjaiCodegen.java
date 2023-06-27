@@ -60,12 +60,14 @@ public class DjaiCodegen {
                 "  - " + attr.get("application") + "\n" +
                 "artifactId: " + attr.get("artifactId") + "\n" +
                 "artifactVersion: " + attr.get("artifactVersion") + "\n" +
-                "artifactDescription: Application description\n" +
-                "title: Application title\n" +
+                "artifactDescription: " + attr.getOrDefault("title", "Application Default Description") + "\n" +
+                "title: " + attr.getOrDefault("title", "Application Default Title") + "\n" +
                 "basePackage: " + attr.get("javaPackage") + "\n" +
                 "addKotlin: true\n" +
                 "dateLibrary: default\n" +
-                "cicd: " + "true".equals(attr.get("cicd")) + "\n"+
+                "cicd: " + "true".equals(attr.get("cicd")) + "\n" +
+                "entityIdType: " + attr.getOrDefault("entityIdType", "String") + "\n" +
+                "h2OnDev: " + attr.getOrDefault("h2OnDev", "true") + "\n" +
                 "addBindingEntity: " + "true".equals(attr.get("addBindingEntity")) + "\n";
         String confFilePath = writeToFile(artifactId, confContent, ".yaml");
         ExecSettings settings = new ExecSettings("/", specFilePath, confFilePath, properties);
