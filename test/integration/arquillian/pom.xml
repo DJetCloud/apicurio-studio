@@ -40,7 +40,7 @@
             <dependency>
                 <groupId>org.jboss.shrinkwrap.resolver</groupId>
                 <artifactId>shrinkwrap-resolver-bom</artifactId>
-                <version>3.1.4</version>
+                <version>3.1.6</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -112,7 +112,7 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.3.0</version><!--$NO-MVN-MAN-VER$-->
+            <version>5.3.1</version><!--$NO-MVN-MAN-VER$-->
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -337,7 +337,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>3.1.0</version>
+                        <version>3.1.2</version>
                         <configuration>
                             <!-- Force JUnit (weird conflicts with NG) -->
                             <testNGArtifactName>none:none</testNGArtifactName>
