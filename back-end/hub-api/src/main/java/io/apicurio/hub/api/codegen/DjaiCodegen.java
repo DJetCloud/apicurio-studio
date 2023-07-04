@@ -9,6 +9,9 @@ import io.apicurio.hub.api.gitlab.GitLabResourceResolver;
 import io.apicurio.hub.core.beans.CodegenProject;
 import io.apicurio.hub.core.beans.LinkedAccountType;
 import io.apicurio.hub.core.exceptions.NotFoundException;
+import io.apicurio.hub.core.exceptions.ServerError;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import pro.bilous.codegen.exec.ExecSettings;
 import pro.bilous.codegen.exec.ServerMain;
 
@@ -24,6 +27,8 @@ import java.util.zip.ZipInputStream;
 @ApplicationScoped
 public class DjaiCodegen {
 
+    private static final Logger log = LoggerFactory.getLogger(DjaiCodegen.class);
+
     @Inject
     private SourceConnectorFactory sourceConnectorFactory;
     @Inject
@@ -33,7 +38,7 @@ public class DjaiCodegen {
     @Inject
     private BitbucketResourceResolver bitbucketResolver;
 
-    public Response createResponse(CodegenProject project, String content) throws IOException {
+    public Response createResponse(CodegenProject project, String content) throws IOException, ServerError {
 
         JaxRsProjectSettings localSettings = toSettings(project);
 
@@ -47,7 +52,7 @@ public class DjaiCodegen {
         return builder.build();
     }
 
-    private StreamingOutput generateToStream(CodegenProject project, String content, String artifactId) throws IOException {
+    private StreamingOutput generateToStream(CodegenProject project, String content, String artifactId) throws IOException, ServerError {
         Map<String, String> attr = project.getAttributes();
 
         ServerMain main = new ServerMain();
@@ -71,8 +76,25 @@ public class DjaiCodegen {
                 "springdoc: " + attr.getOrDefault("springdoc", "true") + "\n" +
                 "addBindingEntity: " + "true".equals(attr.get("addBindingEntity")) + "\n";
         String confFilePath = writeToFile(artifactId, confContent, ".yaml");
-        ExecSettings settings = new ExecSettings("/", specFilePath, confFilePath, properties);
+        String templateDir = getTemplateDir(attr);
+        ExecSettings settings = new ExecSettings("/", specFilePath, confFilePath, properties, templateDir);
         return output -> main.generate(output, settings);
+    }
+
+    private String getTemplateDir(Map<String, String> attr) throws ServerError {
+        if (!attr.containsKey("templateRepo")) {
+            return null;
+        }
+        String templateRepo = attr.get("templateRepo");
+        if (!templateRepo.startsWith("https://") || !templateRepo.endsWith(".git")) {
+            log.warn("Invalid URL of Template Repository");
+            throw new ServerError("Invalid URL of Template Repository");
+        }
+        String repoName = templateRepo.substring(templateRepo.lastIndexOf("/"), templateRepo.lastIndexOf("."));
+        String destinationTemplateDir = "/tmp/template-repos/" + repoName + "/" + System.currentTimeMillis();
+        CloneRepository clone = new CloneRepository(templateRepo, destinationTemplateDir);
+        clone.call();
+        return destinationTemplateDir;
     }
 
     private JaxRsProjectSettings toSettings(CodegenProject project) {
@@ -104,7 +126,7 @@ public class DjaiCodegen {
         return tempFile.getAbsolutePath();
     }
 
-    public String generateAndPublish(CodegenProject project, String content) throws IOException, NotFoundException, SourceConnectorException {
+    public String generateAndPublish(CodegenProject project, String content) throws IOException, NotFoundException, SourceConnectorException, ServerError {
         JaxRsProjectSettings localSettings = toSettings(project);
 
         ByteArrayOutputStream generatedContent = new ByteArrayOutputStream();
