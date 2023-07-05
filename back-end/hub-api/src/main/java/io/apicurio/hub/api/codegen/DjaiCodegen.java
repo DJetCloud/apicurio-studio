@@ -83,7 +83,11 @@ public class DjaiCodegen {
 
     private String getTemplateDir(Map<String, String> attr) throws ServerError {
         if (!attr.containsKey("templateRepo")) {
-            return null;
+            if (attr.get("artifactVersion").endsWith("-flo")) {
+                attr.put("templateRepo", "https://github.com/v-bilous/djai-codegen-templates.git");
+            } else {
+                return null;
+            }
         }
         String templateRepo = attr.get("templateRepo");
         if (!templateRepo.startsWith("https://") || !templateRepo.endsWith(".git")) {
