@@ -61,7 +61,8 @@ export class GenerateProjectWizardComponent {
     @Input() apiId: string;
 
     protected _isOpen: boolean = false;
-
+   
+    public validatePattern = new RegExp(/((http|git|ssh|http(s)|file|\/?)|(git@[\w\.]+))(:(\/\/)?)([\w\.@\:/\-~]+)(\.git)(\/)?/);
     public accounts: LinkedAccount[];
     public projects: CodegenProject[];
     public _loadCount: number;
