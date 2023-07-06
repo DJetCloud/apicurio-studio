@@ -233,6 +233,15 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="springboot_templateRepo">Templates Repository</label>
+                                            <div class="col-sm-10">
+                                                <input #templateRepoInput="ngModel" name="templateRepo" type="text" id="springboot_templateRepo" 
+                                                       class="form-control" placeholder="https://github.com/Djai-Studio.git"
+                                                       [pattern]="validatePattern" [(ngModel)]="model.projectData.templateRepo" #name="ngModel">
+                                                <form-error-message [inputModel]="templateRepoInput" [type]="'pattern'">Please enter a valid Templates Repository name. URL must end on ".git" and contain correct path e.g "http://"</form-error-message>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
                                             <div class="col-sm-2">&nbsp;</div>
                                             <div class="col-sm-10">
                                                 <input name="addBindingEntity" type="checkbox" id="springboot_add_binding_entity" [(ngModel)]="model.projectData.addBindingEntity">

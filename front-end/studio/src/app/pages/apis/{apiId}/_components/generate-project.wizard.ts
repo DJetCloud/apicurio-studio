@@ -59,8 +59,10 @@ export class GenerateProjectWizardComponent {
     @ViewChildren("downloadLink") downloadLink: QueryList<ElementRef>;
 
     @Input() apiId: string;
-
+    
     protected _isOpen: boolean = false;
+    
+    validatePattern = new RegExp(/((http|git|ssh|http(s)|file|\/?)|(git@[\w\.]+))(:(\/\/)?)([\w\.@\:/\-~]+)(\.git)(\/)?/);
 
     public accounts: LinkedAccount[];
     public projects: CodegenProject[];
