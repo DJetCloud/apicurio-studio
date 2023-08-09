@@ -238,7 +238,7 @@
                                                  <input #templateRepoInput="ngModel" name="templateRepo" type="text" 
                                                         id="springboot_templateRepo" class="form-control" placeholder="https://github.com/Djai-Studio.git"
                                                         pattern="^(?:https?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+(\.git)(\/)?" [(ngModel)]="model.projectData.templateRepo" #name="ngModel">
-                                                  <form-error-message [inputModel]="templateRepoInput" [type]="'pattern'">Please enter a valid Templates Repository name. URL must end on ".git" and contain correct path e.g "http://"</form-error-message>
+                                                  <form-error-message [inputModel]="templateRepoInput" [type]="'pattern'">Please enter a valid Templates Repository name. URL must end on ".git" and contain correct path e.g "http(s)://"</form-error-message>
                                              </div> 
                                         </div>
                                         <div class="form-group">
