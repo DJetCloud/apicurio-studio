@@ -1,6 +1,7 @@
 
 .api-breadcrumbs {
   float: left;
+  width: 100%;
 }
 .api-breadcrumbs .breadcrumb {
   margin-bottom: 0;
