@@ -61,7 +61,6 @@ export class GenerateProjectWizardComponent {
     @Input() apiId: string;
 
     protected _isOpen: boolean = false;
-   
     public accounts: LinkedAccount[];
     public projects: CodegenProject[];
     public _loadCount: number;
