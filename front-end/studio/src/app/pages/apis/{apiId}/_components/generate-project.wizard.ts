@@ -61,7 +61,6 @@ export class GenerateProjectWizardComponent {
     @Input() apiId: string;
 
     protected _isOpen: boolean = false;
-
     public accounts: LinkedAccount[];
     public projects: CodegenProject[];
     public _loadCount: number;
@@ -427,6 +426,7 @@ export class GenerateProjectWizardComponent {
         this.model.projectType = project.type;
         this.model.location = project.attributes.location;
         this.model.projectData.artifactId = project.attributes.artifactId;
+        this.model.projectData.templateRepo = project.attributes.templateRepo;
         this.model.projectData.groupId = project.attributes.groupId;
         this.model.projectData.javaPackage = project.attributes.javaPackage;
         this.model.projectData.reactive = project.attributes.reactive;
