@@ -65,6 +65,17 @@ export class InfoSectionComponent extends AbstractBaseComponent {
     }
 
     /**
+     * returns the termsOfService.
+     */
+    public termsOfService(): string {
+        if (this.info()) {
+            return this.info().termsOfService;
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Called when the user changes the version.
      * @param newVersion
      */
@@ -81,6 +92,16 @@ export class InfoSectionComponent extends AbstractBaseComponent {
     public onDescriptionChange(newDescription: string): void {
         console.info("[InfoSectionComponent] User changed the description.");
         let command: ICommand = CommandFactory.createChangeDescriptionCommand(newDescription);
+        this.commandService.emit(command);
+    }
+
+    /**
+     * Called when the user changes the description.
+     @param newTermsOfService
+     */
+     public onTermsOfServiceChange(newTermsOfService: string): void {
+        console.info("[AsyncApiInfoSectionComponent] User changed the terms of service.");
+        let command: ICommand = CommandFactory.createChangePropertyCommand(this.info(), "termsOfService", newTermsOfService);
         this.commandService.emit(command);
     }
 

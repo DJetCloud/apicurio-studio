@@ -30,6 +30,20 @@
                                     [baseNode]="info()" nodePath="description"
                                     [noValueMessage]="'No description.'" (onChange)="onDescriptionChange($event)"></inline-markdown-editor>
         </div>
+           <!-- Terms Of Service -->
+           <div class="section-field-label">
+            <validation-problem [model]="info()" property="termsOfService" [shallow]="true"></validation-problem>
+            <span>Terms Of Service</span>
+        </div>
+        <div class="section-field termsOfService">
+            <inline-markdown-editor [value]="termsOfService()"
+                                    [labelClass]="'api-termsOfService api-item-termsOfService'"
+                                    [formClass]="'api-termsOfService-editor-form'"
+                                    [inputClass]="'api-item-editor api-termsOfService-editor api-termsOfService api-item-termsOfService'"
+                                    [baseNode]="info()" nodePath="termsOfService"
+                                    [noValueMessage]="'No value.'" (onChange)="onTermsOfServiceChange($event)"></inline-markdown-editor>
+        </div>
+        
         <!-- Consumes and Produces (2.0 only) -->
         <div *ngIf="document.is2xDocument()">
             <!-- Consumes -->
