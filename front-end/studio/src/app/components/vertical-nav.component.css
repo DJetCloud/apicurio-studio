@@ -9,21 +9,24 @@
 
 #api-vertical-nav .api-nav-item {
   background-color: #292e34;
-  display: flex;
-  flex-direction: row;
   color: white;
   border-bottom: 1px solid #030303;
-  padding: 15px 10px 15px 10px;
+  padding: 15px 10px;
   text-align: center;
   border-right: 1px solid #030303;
   border-left: 2px solid transparent;
+}
+
+#api-vertical-nav .api-nav-item:hover {
+  cursor: pointer;
+  background-color: #393f44;
 }
 
 .api-nav-item-create {
   background-color: #292e34;
   font-weight: bold;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   color: white;
   padding: 15px 10px 15px 10px;
@@ -32,12 +35,78 @@
   margin-bottom: 20px;
 }
 
-#api-vertical-nav .api-nav-item div { 
-  padding: 4px;
+.api-nav-item-create:hover {
+  cursor: pointer;
+}
+
+.api-nav-item-settings {
+  background-color: #292e34;
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  padding: 15px 10px 15px 10px;
+  border-right: 1px solid #030303;
+  border-left: 2px solid transparent;
+  margin-bottom: 20px;
+}
+
+.submenu-and-title {
+  display: flex;
+  font-size: 16px;
+  flex-direction: row;
+  align-items: baseline;
+  color: #fff;
+}
+
+.submenu-and-title span {
+  font-size: 16px;
+      color: #fff;
+}
+
+.action a span.fa {
+  color: white;
+}
+
+.api-nav-submenu {
+  display: flex;
+  flex-direction: column;
+  z-index: 999;
+  position: absolute;
+  left: 120px;
+  width: 280px;
+  top: 76px;
+  bottom: 0;
+  background-color: #393f44;
+  border-right: 1px solid #030303;
+  padding: 15px;
+}
+
+.api-nav-submenu > .action {
+  display: flex;
+  font-size: 14px;
+  padding-bottom: 10px;
+  padding-left: 8px;
 }
 
 .create { 
   padding: 8px;
+}
+
+.plus-create .create {
+  color: white;
+}
+
+.api-nav-submen .action > span {
+  color: white;
+}
+
+.plus-create {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
 }
 
 #api-vertical-nav .api-nav-item span.fa {
@@ -49,16 +118,13 @@
   height: 100%;
 }
 
-#api-vertical-nav .api-nav-item:hover {
-  background-color: #393f44;
-  font-weight: bold;
-  cursor: pointer;
+.action .underline:hover {
+  text-decoration: underline;
 }
 
 .api-nav-item-create:hover {
   background-color: #393f44;
   font-weight: bold;
-  cursor: pointer;
 }
 
 #api-nav-item-dashboard
@@ -87,15 +153,53 @@
   color: #39a5dc;
 }
 
+#api-vertical-nav .api-nav-item.selected span.sub {
+  color: white;
+}
+
+#api-vertical-nav .api-nav-item.selected span {
+  padding-left: 4px;
+}
+
+.submenu-and-title div {
+  padding-left: 4px;
+  font-size: 14px;
+}
+
 #api-vertical-nav .api-nav-item span {
-  font-size: 22px;
+  font-size: 14px;
   display: inline-block;
+  color: white;
+}
+
+.title-nav-api {
+  margin-top: 0;
+  text-align: left;
+}
+
+#api-vertical-nav .api-nav-item span:hover{
+  display: inline-block;
+  color: white;
 }
 
 .api-nav-item-create span {
-  font-size: 22px;
+  font-size: 14px;
   display: inline-block;
-  color: #50DC39;
+  color: white;
+  padding-left: 4px;
+}
+
+.api-nav-item-create span:hover {
+  text-decoration: underline;
+}
+
+.api-nav-submenu span {
+  color: white;
+}
+
+#plus-create-button {
+  color: #50dc39;
+  font-size: 22px;
 }
 
 #api-vertical-nav .api-nav-item > div {
@@ -187,5 +291,20 @@ span.icon-bar {
     width: 100%;
     top: 0;
     position: relative;
+  }
+
+  .api-nav-submenu {
+    position: relative;
+    width: 100%;
+    left: 0;
+    top: 15px;
+    padding: 15px;
+    background: none;
+    border-right: none;    
+    border-top: 1px solid #030303;
+  }
+
+  .action a {
+    color: white;
   }
 }
